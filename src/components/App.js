@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
+import {BrowserRouter  as Router, Route, Link} from 'react-router-dom';
 import './App.css';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Evntxz</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/components/App.js</code> and save to reload.
-        </p>
+    <Router>
+      <div className="cover-container text-center d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <Header />
+        {/*
+        <Route path="/" exact component={Login} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/dashboard" exact component={Dashboard} />
+        */}
+        <Footer />
+
       </div>
+    </Router>
+
     );
   }
 }
