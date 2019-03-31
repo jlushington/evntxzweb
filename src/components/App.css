@@ -26,3 +26,26 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*FORM */
+input[type="text"] {
+  appearance: none;
+  background-color: none;
+  border: 1px solid #ff4a56;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: #ff4a56;
+  letter-spacing: 0.01em;
+}
+
+button {
+  background-color: white;
+  border: 1px solid #ff4a56;
+  line-height: 0;
+  font-size: 17px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  color: #ff4a56;
+  letter-spacing: 0.01em;
+}

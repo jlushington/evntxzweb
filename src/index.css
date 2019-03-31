@@ -1,5 +1,26 @@
 body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: normal; 
+  font-style: normal; 
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #EFEFEF;
+}
+
+.color-red{
+  color:#FF3B3F;
+}
+
+.color-lightgrey{
+  color:#EFEFEF;
+}
+
+.color-grey{
+  color:#A9A9A9;
+}
+
+.color-blue{
+  color:#CAEBF2;
 }

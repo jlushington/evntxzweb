@@ -1,0 +1,115 @@
+.font-logo {
+
+    font-family: 'BebasNeueRegular'; 
+    font-weight: normal; 
+    font-style: normal; 
+    font-size: 3rem;
+}
+
+/* NAVIGATION */
+.navigation ul {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 0.75rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .navigation li {
+    float: left;
+  }
+  
+  .navigation li a {
+    display: block;
+    color: #FF3B3F;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  .navigation li a:hover {
+    color: #A9A9A9;
+  }
+
+  /*LIST SOCIAL MEDIA*/
+  .social ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .social li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    width: 100px;
+   
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+  }
+  
+/* SEARCH */
+
+.searchnav {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #a9a9a9;
+}
+.searchnav ul {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 20px;
+}
+.searchnav li {
+  display: inline-block;
+}
+.searchnav li a {
+  display: inline-block;
+  color: #a9a9a9;
+  padding: 50px;
+  text-decoration: none;
+}
+
+.searchnav li a:hover {
+  color: #000000;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #000000;
+}
+
+/*
+.searchnav ul {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.searchnav li {
+  float: center;
+}
+
+.searchnav li a {
+
+  color: #FF3B3F;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.searchnav li a:hover {
+  color: #A9A9A9;
+}
+*/
+ 
