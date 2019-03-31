@@ -1,0 +1,22 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1554049999.4087703,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554049999.409216,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1554050001.3216908,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554050001.6290677,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jlushington/environment-evntxz-staging.git\" @ \"600f064459b2515c669586ff9b7066d9b0410b57\" in path \"/workspace\""}
+Step: build-step-apply:
+
+Modified file /workspace/env/Chart.yaml to set the chart to version 12
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
+Successfully added Helm repository jenkins-x.
+Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository releases.
+Applying helm chart at . as release name jx-staging to namespace jx-staging
+Ignoring templates/.gitignore
+Wrote chart values.yaml values.yaml generated from directory tree
+Using values files: values.yaml
+error: upgrading helm chart '.': failed to run 'helm upgrade --namespace jx-staging --install --wait --force --timeout 600 --values values.yaml jx-staging .' command in directory '.', output: 'E0331 16:34:50.545212      84 portforward.go:303] error copying from remote stream to local connection: readfrom tcp4 127.0.0.1:46687->127.0.0.1:45478: write tcp4 127.0.0.1:46687->127.0.0.1:45478: write: broken pipe
+Error: UPGRADE FAILED: no Release with the name "evntxzweb-0.0.5" found'
+Applying chart overrides
