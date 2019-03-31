@@ -1,0 +1,224 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1554048066.5692444,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554048066.5719864,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1554048068.8399065,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554048069.1695795,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jlushington/evntxzweb.git\" @ \"dd46d8fda06bfa59272625b3196c5f73282f4850\" in path \"/workspace\""}
+Step: build-step-jenkins:
+
+Picked up _JAVA_OPTIONS: -Xmx400m
+  14.868 [id=21]	WARNING	c.c.j.p.k.KubernetesCredentialProvider#convertSecret: Failed to convert Secret 'kaniko-secret' of type secretText due to secretText credential is missing the text
+Started
+Running in Durability level: PERFORMANCE_OPTIMIZED
+  20.270 [id=26]	WARNING	i.f.k.c.i.VersionUsageUtils#alert: The client is using resource type 'customresourcedefinitions' with unstable version 'v1beta1'
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /tmp/jenkinsTests.tmp/jenkins1067107390501017209test/workspace/job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (CI Build and push snapshot)
+Stage "CI Build and push snapshot" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Release)
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/jlushington/evntxzweb.git # timeout=10
+Fetching upstream changes from https://github.com/jlushington/evntxzweb.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/jlushington/evntxzweb.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision dd46d8fda06bfa59272625b3196c5f73282f4850 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dd46d8fda06bfa59272625b3196c5f73282f4850
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master dd46d8fda06bfa59272625b3196c5f73282f4850
+Commit message: "Home Page update"
+First time build. Skipping changelog.
+[Pipeline] sh
++ jx-release-version
++ echo 0.0.4
+[Pipeline] sh
++ cat VERSION
++ jx step tag --version 0.0.4
+Tag v0.0.4 created and pushed to remote origin
+[Pipeline] sh
++ npm install
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/chokidar/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 1864 packages in 33.727s
+[Pipeline] sh
++ CI=true DISPLAY=:99 npm test
+
+> evntxz-web@0.1.0 test /tmp/jenkinsTests.tmp/jenkins1067107390501017209test/workspace/job
+> react-scripts test --env=jsdom
+
+PASS src/components/App.test.js
+  ✓ renders without crashing (74ms)
+
+  console.error node_modules/react-dom/cjs/react-dom.development.js:506
+    Warning: Invalid DOM property `class`. Did you mean `className`?
+        in div (at Banner.js:18)
+        in div (at Banner.js:17)
+        in div (at Banner.js:8)
+        in Banner (at Home.js:13)
+        in div (at Home.js:12)
+        in Header (created by Context.Consumer)
+        in Route (at App.js:17)
+        in div (at App.js:14)
+        in Router (created by BrowserRouter)
+        in BrowserRouter (at App.js:13)
+        in App (at App.test.js:7)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        2.797s
+Ran all test suites.
+[Pipeline] sh
++ cat VERSION
++ export VERSION=0.0.4
++ skaffold build -f skaffold.yaml
+time="2019-03-31T16:03:38Z" level=warning msg="config version (skaffold/v1beta2) out of date: upgrading to latest (skaffold/v1beta6)"
+Generating Tag for [changeme]...
+Starting build...
+Building [changeme]...
+Sending build context to Docker daemon    535kBSending build context to Docker daemon  2.662MBSending build context to Docker daemon  4.248MBSending build context to Docker daemon  8.519MBSending build context to Docker daemon  10.63MBSending build context to Docker daemon  14.36MBSending build context to Docker daemon  17.02MBSending build context to Docker daemon  18.07MBSending build context to Docker daemon  20.74MBSending build context to Docker daemon  21.79MBSending build context to Docker daemon  23.92MBSending build context to Docker daemon  29.82MBSending build context to Docker daemon   31.4MBSending build context to Docker daemon  34.62MBSending build context to Docker daemon   36.2MBSending build context to Docker daemon  37.25MBSending build context to Docker daemon   38.3MBSending build context to Docker daemon  39.35MBSending build context to Docker daemon  44.71MBSending build context to Docker daemon  50.64MBSending build context to Docker daemon  54.36MBSending build context to Docker daemon  58.11MBSending build context to Docker daemon  62.38MBSending build context to Docker daemon  66.64MBSending build context to Docker daemon  68.81MBSending build context to Docker daemon  69.86MBSending build context to Docker daemon  71.96MBSending build context to Docker daemon  76.75MBSending build context to Docker daemon  79.95MBSending build context to Docker daemon  82.09MBSending build context to Docker daemon  86.32MBSending build context to Docker daemon   89.5MBSending build context to Docker daemon  91.09MBSending build context to Docker daemon  92.68MBSending build context to Docker daemon  95.33MBSending build context to Docker daemon  100.2MBSending build context to Docker daemon  102.3MBSending build context to Docker daemon  108.7MBSending build context to Docker daemon  117.3MBSending build context to Docker daemon  122.7MBSending build context to Docker daemon  128.6MBSending build context to Docker daemon  133.4MBSending build context to Docker daemon  140.4MBSending build context to Docker daemon  147.9MBSending build context to Docker daemon  154.3MBSending build context to Docker daemon  161.3MBSending build context to Docker daemon  168.2MBSending build context to Docker daemon  175.2MBSending build context to Docker daemon  182.8MBSending build context to Docker daemon  188.7MBSending build context to Docker daemon  195.2MBSending build context to Docker daemon  199.9MBSending build context to Docker daemon  202.6MBSending build context to Docker daemon  203.7MBSending build context to Docker daemon  210.7MBSending build context to Docker daemon  213.4MBSending build context to Docker daemon    216MBSending build context to Docker daemon  217.1MBSending build context to Docker daemon  218.1MBSending build context to Docker daemon  220.8MBSending build context to Docker daemon  221.3MBSending build context to Docker daemon  222.4MBSending build context to Docker daemon  223.4MBSending build context to Docker daemon  225.5MBSending build context to Docker daemon  229.3MBSending build context to Docker daemon    232MBSending build context to Docker daemon    239MBSending build context to Docker daemon  242.8MBSending build context to Docker daemon    246MBSending build context to Docker daemon  248.6MBSending build context to Docker daemon  252.1MB
+Step 1/6 : FROM node:9-slim
+9-slim: Pulling from library/node
+5bba3ecb4cd6: Pulling fs layer
+196b8e3c919d: Pulling fs layer
+7d083412657b: Pulling fs layer
+a88538b9cd05: Pulling fs layer
+e01bd28a434b: Pulling fs layer
+a88538b9cd05: Waiting
+e01bd28a434b: Waiting
+196b8e3c919d: Verifying Checksum
+196b8e3c919d: Download complete
+7d083412657b: Verifying Checksum
+7d083412657b: Download complete
+e01bd28a434b: Verifying Checksum
+e01bd28a434b: Download complete
+5bba3ecb4cd6: Verifying Checksum
+5bba3ecb4cd6: Download complete
+a88538b9cd05: Verifying Checksum
+a88538b9cd05: Download complete
+5bba3ecb4cd6: Pull complete
+196b8e3c919d: Pull complete
+7d083412657b: Pull complete
+a88538b9cd05: Pull complete
+e01bd28a434b: Pull complete
+Digest: sha256:288b29c1925d65b2d7d8701f8ada201e7dcd066438c0fb4299c35dff129b893f
+Status: Downloaded newer image for node:9-slim
+ ---> e20bb4abe4ee
+Step 2/6 : ENV PORT 8080
+ ---> Running in 14e4decb3bd6
+ ---> bec9a53efc8d
+Step 3/6 : EXPOSE 8080
+ ---> Running in 7d077df33364
+ ---> 2e241d1b9427
+Step 4/6 : WORKDIR /usr/src/app
+ ---> 6daf8b988de5
+Step 5/6 : COPY . .
+ ---> 949c9aac695e
+Step 6/6 : CMD npm start
+ ---> Running in f4c7c8995344
+ ---> 706e5e5f098d
+Successfully built 706e5e5f098d
+The push refers to a repository [10.39.253.125:5000/jlushington/evntxzweb]
+65c5383df53d: Preparing
+28bb2b36f2aa: Preparing
+e16c226cf2a8: Preparing
+7fd597d009e4: Preparing
+7c6ab5fb7059: Preparing
+ed271eac23e9: Preparing
+156ff16f37e4: Preparing
+ed271eac23e9: Waiting
+156ff16f37e4: Waiting
+7fd597d009e4: Layer already exists
+28bb2b36f2aa: Pushed
+156ff16f37e4: Layer already exists
+ed271eac23e9: Pushed
+7c6ab5fb7059: Pushed
+e16c226cf2a8: Pushed
+65c5383df53d: Pushed
+0.0.4: digest: sha256:7bf2a4f43f396e52998194adb6e876361c3f2a22306f380bbfa9d150cf3e5c90 size: 1789
+Build complete in 1m8.396857871s
+Starting test...
+Test complete in 7.221µs
+changeme -> 10.39.253.125:5000/jlushington/evntxzweb:0.0.4@sha256:7bf2a4f43f396e52998194adb6e876361c3f2a22306f380bbfa9d150cf3e5c90
+There is a new version (0.26.0) of Skaffold available. Download it at https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+
+[Pipeline] sh
++ cat VERSION
++ jx step post build --image 10.39.253.125:5000/jlushington/evntxzweb:0.0.4
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Promote to Environments)
+[Pipeline] dir
+Running in /tmp/jenkinsTests.tmp/jenkins1067107390501017209test/workspace/job/charts/evntxzweb
+[Pipeline] {
+[Pipeline] sh
++ cat ../../VERSION
++ jx step changelog --batch-mode --version v0.0.4
+Converted /tmp/jenkinsTests.tmp/jenkins1067107390501017209test/workspace/job/charts/evntxzweb to an unshallow repository
+Generating change log from git ref dd46d8fda06bfa59272625b3196c5f73282f4850 => 68819d7b9712603459e0f13ccdf5f6ba523a46b2
+Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+Finding issues in commit messages using git format
+No release found for jlushington/evntxzweb and tag v0.0.4 so creating a new release
+Updated the release information at https://github.com/jlushington/evntxzweb/releases/tag/v0.0.4
+generated: /tmp/jenkinsTests.tmp/jenkins1067107390501017209test/workspace/job/charts/evntxzweb/templates/release.yaml
+Created Release evntxzweb-0-0-4 resource in namespace jx
+Updating PipelineActivity jlushington-evntxzweb-master-4 with version 0.0.4
+Updated PipelineActivities jlushington-evntxzweb-master-4 with release notes URL: https://github.com/jlushington/evntxzweb/releases/tag/v0.0.4
+[Pipeline] sh
++ jx step helm release
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
+Successfully added Helm repository jenkins-x.
+Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository releases.
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file evntxzweb-0.0.4.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+[Pipeline] sh
++ cat ../../VERSION
++ jx promote -b --all-auto --timeout 1h --version 0.0.4
+prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/jx/issues/2410
+Promoting app evntxzweb version 0.0.4 to namespace jx-staging
+Created Pull Request: https://github.com/jlushington/environment-evntxz-staging/pull/12
+
+Pull Request https://github.com/jlushington/environment-evntxz-staging/pull/12 is merged at sha b2b67e3d11e1554e297888d5875bdde3035e891f
+Pull Request merged but we are not waiting for the update pipeline to complete!
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
