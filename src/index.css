@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400');
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
@@ -9,6 +11,9 @@ body {
   background-color: #EFEFEF;
 }
 
+.color-white{
+  color:#FFFFFF;
+}
 .color-red{
   color:#FF3B3F;
 }
@@ -23,4 +28,27 @@ body {
 
 .color-blue{
   color:#CAEBF2;
+}
+
+.font-light{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+.font-regular{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+
+}
+
+.font-125{
+    font-size: 1.25rem;  
+}
+
+.font-100{
+    font-size: 1rem;  
+}
+
+.font-75{
+    font-size: 0.75rem;   
 }

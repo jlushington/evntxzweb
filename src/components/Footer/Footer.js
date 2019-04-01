@@ -17,11 +17,10 @@ export default class Footer extends Component{
                                 </div> 
                                 <div className="col-sm-6">							
                                     <ul className="social-link pull-right">
-                                        <li><a href=""><span className="glyphicon glyphicon-heart-empty"></span></a></li>						
-                                        <li><a href=""><span className="glyphicon glyphicon-heart-empty"></span></a></li>
-                                        <li><a href=""><span className="glyphicon glyphicon-heart-empty"></span></a></li>
-                                        <li><a href=""><span className="glyphicon glyphicon-heart-empty"></span></a></li>
-                                        <li><a href=""><span className="glyphicon glyphicon-heart-empty"></span></a></li>
+                                        <li><a href=""><span className="fab fa-facebook-square"></span></a></li>						
+                                        <li><a href=""><span className="fab fa-twitter-square"></span></a></li>
+                                        <li><a href=""><span className="fab fa-instagram"></span></a></li>
+                                        <li><a href=""><span className="fab fa-youtube"></span></a></li>
                                     </ul>							
                                 </div> 
                             </div>

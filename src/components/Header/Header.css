@@ -54,35 +54,6 @@
     transition: font-size 0.3s ease, background-color 0.3s ease;
   }
   
-/* SEARCH */
-
-.searchnav {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 0.85rem;
-  text-align: center;
-  color: #a9a9a9;
-}
-.searchnav ul {
-  display: inline-block;
-  margin: 10px 0;
-  padding: 20px;
-}
-.searchnav li {
-  display: inline-block;
-}
-.searchnav li a {
-  display: inline-block;
-  color: #a9a9a9;
-  padding: 50px;
-  text-decoration: none;
-}
-
-.searchnav li a:hover {
-  color: #000000;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #000000;
-}
 
 /*
 .searchnav ul {

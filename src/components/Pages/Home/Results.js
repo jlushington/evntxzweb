@@ -6,7 +6,7 @@ export default class Results extends Component{
 
     render(){
         return(
-            <div className="container">
+            <div className="container pb-5">
             <div className="row">
                 <div className="col-md-3 col-sm-6">
                     <div className="product-grid">
@@ -23,13 +23,6 @@ export default class Results extends Component{
                             <span className="product-new-label">Sale</span>
                             <span className="product-discount-label">20%</span>
                         </div>
-                        <ul className="rating">
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star disable"></li>
-                        </ul>
                         <div className="product-content">
                             <h3 className="title"><a href="{#}">Women's Blouse</a></h3>
                             <div className="price">$16.00
@@ -54,13 +47,7 @@ export default class Results extends Component{
                             <span className="product-new-label">Sale</span>
                             <span className="product-discount-label">50%</span>
                         </div>
-                        <ul className="rating">
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                        </ul>
+
                         <div className="product-content">
                             <h3 className="title"><a href="#">Men's Plain Tshirt</a></h3>
                             <div className="price">$5.00
@@ -85,13 +72,6 @@ export default class Results extends Component{
                             <span className="product-new-label">Sale</span>
                             <span className="product-discount-label">50%</span>
                         </div>
-                        <ul className="rating">
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                        </ul>
                         <div className="product-content">
                             <h3 className="title"><a href="#">Men's Plain Tshirt</a></h3>
                             <div className="price">$5.00
@@ -116,13 +96,6 @@ export default class Results extends Component{
                             <span className="product-new-label">Sale</span>
                             <span className="product-discount-label">50%</span>
                         </div>
-                        <ul className="rating">
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                            <li className="fa fa-star"></li>
-                        </ul>
                         <div className="product-content">
                             <h3 className="title"><a href="#">Men's Plain Tshirt</a></h3>
                             <div className="price">$5.00

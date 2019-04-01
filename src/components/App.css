@@ -30,22 +30,23 @@
 /*FORM */
 input[type="text"] {
   appearance: none;
-  background-color: none;
-  border: 1px solid #ff4a56;
+  background-color: #FFFFFF;
+  border: 1px solid #FF3B3F;
   width: 100%;
-  padding: 10px 10px;
-  border-radius: 10px;
-  color: #ff4a56;
-  letter-spacing: 0.01em;
+  padding: 7px 7px;
+  border-radius: 5px;
+  color: #FF3B3F;
+  letter-spacing: 0.1em;
 }
 
 button {
-  background-color: white;
-  border: 1px solid #ff4a56;
+  border: none;
+  font-size: 0.75rem;
+  color: #FFFFFF;
+  background-color: #FF3B3F;
   line-height: 0;
-  font-size: 17px;
-  padding: 20px 10px;
-  border-radius: 10px;
-  color: #ff4a56;
+  padding: 20px 30px;
+  border-radius: 20px;
   letter-spacing: 0.01em;
+  text-shadow: none;
 }
