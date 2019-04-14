@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import Route from '../../Common/Redirect';
 
 export default class Login extends Component{
 
@@ -48,7 +49,7 @@ export default class Login extends Component{
                     this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
                 }else{
                     localStorage.setItem('authtoken', data.Message);
-                    state.setState({isAuth:true});
+                    this.state.setState({isAuth:true});
                     localStorage.setItem('isAuth', this.state.isAuth);
 
                     //redirect to Home
