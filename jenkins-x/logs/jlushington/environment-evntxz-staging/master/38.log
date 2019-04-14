@@ -1,0 +1,20 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1555280488.0928988,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1555280488.0971181,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1555280488.9561236,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1555280489.1991668,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jlushington/environment-evntxz-staging.git\" @ \"4db889a6046800626f86bbd3e1e7d6c23e0f07e5\" in path \"/workspace\""}
+Step: build-step-apply:
+
+Modified file /workspace/env/Chart.yaml to set the chart to version 38
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
+Successfully added Helm repository jenkins-x.
+Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository releases.
+Applying helm chart at . as release name jx-staging to namespace jx-staging
+Ignoring templates/.gitignore
+Wrote chart values.yaml values.yaml generated from directory tree
+Using values files: values.yaml
+Applying chart overrides
