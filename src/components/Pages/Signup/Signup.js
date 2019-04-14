@@ -34,7 +34,7 @@ export default class Signup extends Component{
 
         const data = { email:this.state.email };
 
-        fetch('http://localhost:8000/api/auth/authcheck', {
+        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/auth/authcheck', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -65,9 +65,9 @@ export default class Signup extends Component{
       handleSubmit(event){
         event.preventDefault();
 
-        const data = { username:this.state.username, password:this.state.password, passwordConfirm:this.state.passwordConfirm , email:this.state.email  };
+        const data = { username:this.state.username, password:this.state.password, passwordConfirm:this.state.passwordConfirm , email:this.state.email,roles:[{name:"ENDUSER"}]  };
 
-        fetch('http://localhost:8000/api/user/adduser', {
+        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/user/adduser', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -88,6 +88,8 @@ export default class Signup extends Component{
             });
 
       }
+
+ 
 
 
 

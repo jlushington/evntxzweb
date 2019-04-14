@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 
 export default class Login extends Component{
 
@@ -8,7 +9,8 @@ export default class Login extends Component{
         this.state={
             password:'',
             email:'', 
-            loginmodal:false
+            loginmodal:false,
+            isAuth:false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -30,7 +32,7 @@ export default class Login extends Component{
         event.preventDefault();
         const data = {password:this.state.password, email:this.state.email};
 
-        fetch('http://localhost:8000/api/auth/authaction', {
+        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/auth/authaction', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -45,13 +47,35 @@ export default class Login extends Component{
                 if(data.MessageTypeID ==0){
                     this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
                 }else{
-                    //this where you would redirect them
+                    localStorage.setItem('authtoken', data.Message);
+                    state.setState({isAuth:true});
+                    localStorage.setItem('isAuth', this.state.isAuth);
+
+                    //redirect to Home
+                    return <Redirect to='/' />
                 }
                 console.info(data);
             }).catch((error) => {
                 console.log("error");
             });
       }
+
+      componentDidMount() {
+
+        if(localStorage.getItem("infiniteScrollEnabled") === null){
+
+        }else{
+            this.state.isAuth= localStorage.getItem('isAuth');
+
+            <Route
+            path="/privacy-policy"
+            component={ Redirect }
+            loc="http://evntxzcp.jx-staging.35.231.104.48.nip.io/"
+            />
+        }
+
+        
+    }
 
 
     render(){
