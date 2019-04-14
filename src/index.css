@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,600');
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -96,6 +96,10 @@ body {
     font-weight: 400;
 
 }
+.font-bold{
+  font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
 
 .font-125{
     font-size: 1.25rem;  
@@ -108,5 +112,56 @@ body {
 .font-75{
     font-size: 0.75rem;   
 }
+
+.h-10{
+  height:10px;
+}
+.h-25{
+  height:25px;
+}
+.h-50{
+  height:50px;
+}
+.h-100{
+  display:block;
+  height:100px;
+}
+
+
+a.linkbutton:link {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+
+a.linkbutton:visited {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+
+a.linkbutton:hover {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;;
+}
+
 
 

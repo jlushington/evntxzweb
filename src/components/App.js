@@ -13,6 +13,7 @@ import Signup from './Pages/Signup/Signup';
 import Login from './Pages/Login/Login';
 import ProductDetail from './Pages/Product/ProductDetail';
 import Cart from './Pages/Cart/Cart';
+import CheckOut from './Pages/Cart/CheckOut';
 
 class App extends Component {
 
@@ -32,6 +33,8 @@ class App extends Component {
           <Route path="/login" exact component={Login}></Route>
           <Route path="/productdetail/:iD" exact component={ProductDetail}></Route>
           <Route path="/cart" component={Cart}/>
+          <Route path="/checkout" component={CheckOut}/>
+      
 
         
         <Footer />

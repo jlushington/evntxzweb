@@ -63,7 +63,7 @@ export default class Login extends Component{
                     <div className="col-md-8 col-xs-8">
                         {/*LOGIN TITLE*/}
                         <div className="row">
-                            <div className="col-md-12 col-xs-12 font-125 font-regular p-b-25">LOGIN</div>
+                            <div className="col-md-12 col-xs-12 font-125 font-bold p-b-25">LOGIN</div>
                         </div>
 
                         {/*LOGIN BODY*/}
@@ -73,11 +73,11 @@ export default class Login extends Component{
                                 <div className="row"><div className="col-md-12 col-xs-12">
                                 <form onSubmit={this.handleSubmit}>
                             <div className="p-b-25">
-                                <div className="font-75 font-regular align-left">Email</div>
+                                <div className="font-75 font-regular align-left text-left">Email</div>
                                 <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChange}/>
                             </div>
                             <div className="p-b-25">
-                                <div className="font-75 font-regular align-left"> Password</div>
+                                <div className="font-75 font-regular align-left text-left"> Password</div>
                                 <input id="password" name="password" type="password" onChange={this.handleChange} />
                             </div>
                             <div align="center">

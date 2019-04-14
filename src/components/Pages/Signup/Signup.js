@@ -93,41 +93,50 @@ export default class Signup extends Component{
 
     render(){
         return(   
-            <div className="container">
-                <div className="row login_box">
-                    <div className="col-md-12 col-xs-12" align="center">
-                        <div className="outter"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" className="image-circle"/></div>   
-                        <h1>Hi Guest</h1>
+            <div className="container p-t-100  p-b-100">
+                <div className="row justify-content-center">
+                    {/*LOGIN*/}
+                    <div className="col-md-8 col-xs-8">
+                        {/*LOGIN TITLE*/}
+                        <div className="row">
+                            <div className="col-md-12 col-xs-12 font-125 font-bold p-b-25">SIGN UP</div>
+                        </div>
+
+                        {/*LOGIN BODY*/}
+                        <div className="row bg-grey align-left">
+                            <div className="col-md-12 col-xs-12">
+                                <div className="row"><div className="col-md-12 col-xs-12 font-75 font-regular p-b-25 p-t-25">Please enter your email and password below to access your account</div></div>
+                                <div className="row"><div className="col-md-12 col-xs-12">
+                                <form onSubmit={this.handleSubmit}>
+                                    <div className="control">
+                                        <div className="font-75 font-regular align-left text-left">Email</div>
+                                        <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChangeCheck}/>
+                                    </div>
+
+                                    <div className="control">
+                                        <div className="font-75 font-regular align-left text-left">Username</div>
+                                        <input id="username" name="useruane" type="text" onChange={this.handleChange}  />
+                                    </div>
+
+                                    <div className="control">
+                                        <div className="font-75 font-regular align-left text-left">Password</div>
+                                        <input id="password" name="password" type="password" onChange={this.handleChange} />
+                                    </div>
+                                        
+                                    <div className="control">
+                                        <div className="font-75 font-regular align-left text-left">Confirm Password</div>
+                                        <input id="passwordConfirm" name="passwordConfirm" type="password" onChange={this.handleChange} />
+                                    </div>
+                                    <div align="center">
+                                        <button className="btn btn-orange">Signup</button>
+                                    </div> 
+                                </form>
+                                </div></div>
+                                <div className="row"><div className="col-md-12 col-xs-12"></div></div>
+                            </div>
+                        </div>
                     </div>
-        
-                    <div className="col-md-12 col-xs-12 login_control">
-                        <form onSubmit={this.handleSubmit}>
 
-                            <div className="control">
-                                <div className="label">Email</div>
-                                <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChangeCheck}/>
-                            </div>
-
-                            <div className="control">
-                                <div className="label">Username</div>
-                                <input id="username" name="useruane" type="text" onChange={this.handleChange}  />
-                            </div>
-
-                            <div className="control">
-                                <div className="label">Password</div>
-                                <input id="password" name="password" type="password" onChange={this.handleChange} />
-                            </div>
-                                    
-                            <div className="control">
-                                <div className="label">Confirm Password</div>
-                                    <input id="passwordConfirm" name="passwordConfirm" type="password" onChange={this.handleChange} />
-                                </div>
-                                <div align="center">
-                                    <button className="btn btn-orange">Signup</button>
-                                </div> 
-                        </form>        
-                    </div>
-                 
                 </div>
                 
 

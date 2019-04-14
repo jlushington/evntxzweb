@@ -25,7 +25,7 @@ export default class Header extends Component{
                             <div className="col-sm-4 text-left pt-3 navigation">
                                 <ul>
                                     <li><a href="/signup">Signup</a></li>
-                                    <li><a className="active" href="#about">Login</a></li>
+                                    <li><a className="active" href="/login">Login</a></li>
                                     <li className="fas color-grey">
                                         <a href="/cart"><span style={{ marginRight: 24 }}><Badge count={1}><Avatar shape="square" icon="shopping-cart" /></Badge></span></a>
                                     </li>    

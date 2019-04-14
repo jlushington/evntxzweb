@@ -13,7 +13,7 @@ const Step = Steps.Step;
 
 const steps = [
     {title: 'Cart'}, 
-    {title: 'Login'}, 
+    {title: 'Checkout'}, 
     {title: 'Payment'}
 ];
 
@@ -130,8 +130,18 @@ class Cart extends Component{
                         <div className="row p-t-50">
                             <div className="col-md-12 col-sm-12">
                                 <div class="card">
-                                    <div class="card-body">
-                                        This is some text within a card body.
+                                    <div class="card-body text-left">
+                                        <div className="row"><div className="col-md-12 col-sm-12 font-bold font-125 p-b-50">SUMMARY</div></div>
+                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-25">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD $290.00</div></div>
+
+                                        <div className="row"><div className="col-md-12 col-sm-12">TAX</div></div>
+                                        <div className="row"><div className="col-md-12 col-sm-12 p-b-100 font-75">Standard tax rates will be applied based on the province/territory that you are shipping to.</div></div>
+
+                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-50">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD $290.00</div></div>
+
+                                        <div className="row"><div className="col-md-10 col-sm-10 font-75 color-white font-light">
+                                            <a class="linkbutton font-regular font-75" href="/checkout">CHECKOUT</a>
+                                        </div></div>
                                     </div>
                                 </div>
                             </div>
@@ -141,8 +151,15 @@ class Cart extends Component{
                         <div className="row p-t-25">
                             <div className="col-md-12 col-sm-12">
                                 <div class="card">
-                                    <div class="card-body">
-                                        This is some text within a card body.
+                                    <div class="card-body  text-left">
+                                        <div className="row"><div className="col-md-12 col-sm-12 font-bold font-125 p-b-50">Important Anti-Resale Policy</div></div>
+                                        <div className="row"><div className="col-md-12 col-sm-12 font-75 p-b-25">
+                                        Museum of Ice Cream is working hard to eliminate scalpers who are preventing our fans from affordably joining us on this incredible journey. 
+                                        Tickets are non-transferable, non-exchangeable, non-refundable and absolutely cannot be resold.  The names on the tickets cannot be changed. 
+                                        One member of your party must have a valid photo ID that matches at least one name on the tickets being used by your party. You cannot bring 
+                                        another person's photo ID or bring a photocopy of someone else's ID. Tickets are available via mobile delivery and will call only and cannot 
+                                        be resold via any secondary provider.  ShowClix is the only authorized provider of Museum of Ice Cream tickets.  If you sell or buy a ticket 
+                                        on the secondary market, please be advised that MOIC reserves the right to cancel that ticket at any time without a refund.  </div></div>
                                     </div>
                                 </div>
                             </div>
