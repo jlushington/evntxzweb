@@ -56,39 +56,42 @@ export default class Login extends Component{
 
     render(){
         return(
-            <div className="container">
-                <div className="row login_box">
+            <div className="container p-t-100  p-b-100">
 
-                    <div className="col-md-12 col-xs-12" align="center">
-                        <div className="outter"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" className="image-circle"/></div>   
-                        <h1>Hi Guest</h1>
-                    </div>
+                <div className="row justify-content-center">
+                    {/*LOGIN*/}
+                    <div className="col-md-8 col-xs-8">
+                        {/*LOGIN TITLE*/}
+                        <div className="row">
+                            <div className="col-md-12 col-xs-12 font-125 font-regular p-b-25">LOGIN</div>
+                        </div>
 
-                    <div className="col-md-12 col-xs-12 login_control">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="control">
-                                <div className="label">Email</div>
+                        {/*LOGIN BODY*/}
+                        <div className="row bg-grey align-left">
+                            <div className="col-md-12 col-xs-12">
+                                <div className="row"><div className="col-md-12 col-xs-12 font-75 font-regular p-b-25 p-t-25">Please enter your email and password below to access your account</div></div>
+                                <div className="row"><div className="col-md-12 col-xs-12">
+                                <form onSubmit={this.handleSubmit}>
+                            <div className="p-b-25">
+                                <div className="font-75 font-regular align-left">Email</div>
                                 <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChange}/>
                             </div>
-                            <div className="control">
-                                <div className="label"> Password</div>
+                            <div className="p-b-25">
+                                <div className="font-75 font-regular align-left"> Password</div>
                                 <input id="password" name="password" type="password" onChange={this.handleChange} />
                             </div>
                             <div align="center">
                                 <button className="btn btn-orange">Signup</button>
                             </div>
                         </form>
+                                </div></div>
+                                <div className="row"><div className="col-md-12 col-xs-12"></div></div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-
-                 {/*MODEL - LOGIN ERROR */}
-                 <Modal isOpen={this.state.loginmodal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Evntxz- Login Error</ModalHeader>
-                    <ModalBody>
-                        Email Address and the Password that you provided did not match, Please Try again.
-                    </ModalBody>
-                </Modal>
-
+              
             </div>
         );
     }
