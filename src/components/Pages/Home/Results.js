@@ -48,7 +48,7 @@ export default class Results extends Component{
                 <div className="col-md-3 col-sm-6 p-0 h-100">
                     <div className="product-grid ">
                         <div className="product-image">
-                            <a href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/"+prod.iD}>
+                            <a href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/productdetail/"+prod.iD}>
                                 {
                                 prod.eventImage.map(imgd => 
                                     <img className="pic-1" src={imgd.imageLoc}  alt="image001"/>
@@ -65,11 +65,11 @@ export default class Results extends Component{
                             */}
                         </div>
                         <div className="product-content">
-                            <h3 className="title"><a href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/"+prod.iD}>{prod.eventName}</a></h3>
+                            <h3 className="title"><a href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/productdetail/"+prod.iD}>{prod.eventName}</a></h3>
                             <div className="price">{prod.eventPricing[0].ticketPricingCurrency} ${prod.eventPricing[0].ticketPricingAmount}.00
                                 {/*<span>$20.00</span>*/}
                             </div>
-                            <a className="add-to-cart" href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/"+prod.iD}>+ Add To Cart</a>
+                            <a className="add-to-cart" href={"http://evntxzweb.jx-staging.35.231.104.48.nip.io/productdetail/"+prod.iD}>+ Add To Cart</a>
                         </div>
                     </div>
                 </div>
