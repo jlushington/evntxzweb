@@ -16,6 +16,7 @@ pipeline {
         HELM_RELEASE = "$PREVIEW_NAMESPACE".toLowerCase()
       }
       steps {
+        sh "npm set progress=false"
         sh "npm install"
         sh "CI=true DISPLAY=:99 npm test"
         sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
@@ -36,6 +37,7 @@ pipeline {
         // so we can retrieve the version in later steps
         sh "echo \$(jx-release-version) > VERSION"
         sh "jx step tag --version \$(cat VERSION)"
+        sh "npm set progress=false"
         sh "npm install"
         sh "CI=true DISPLAY=:99 npm test"
         sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
