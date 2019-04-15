@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 import { Redirect } from 'react-router-dom';
-import Route from '../../Common/Redirect';
+//import Route from '../../Common/Redirect';
 
 export default class Login extends Component{
 
@@ -45,19 +45,20 @@ export default class Login extends Component{
           }).then(response => {
               return response.json();
             }).then( data=>{
-                if(data.MessageTypeID ==0){
+                if(data.MessageTypeID ===0){
                     this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
                 }else{
+                    console.info(data)
                     localStorage.setItem('authtoken', data.Message);
-                    this.state.setState({isAuth:true});
-                    localStorage.setItem('isAuth', this.state.isAuth);
+                    //this.state.setState({isAuth:true});
+                    localStorage.setItem('isAuth', true);
 
                     //redirect to Home
                     return <Redirect to='/' />
                 }
                 console.info(data);
             }).catch((error) => {
-                console.log("error");
+                console.log(error);
             });
       }
 
@@ -66,13 +67,15 @@ export default class Login extends Component{
         if(localStorage.getItem("infiniteScrollEnabled") === null){
 
         }else{
-            this.state.isAuth= localStorage.getItem('isAuth');
+            //this.state.isAuth= localStorage.getItem('isAuth');
 
+            /*
             <Route
             path="/privacy-policy"
             component={ Redirect }
             loc="http://evntxzcp.jx-staging.35.231.104.48.nip.io/"
             />
+            */
         }
 
         

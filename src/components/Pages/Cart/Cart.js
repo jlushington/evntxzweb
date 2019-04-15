@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {Steps, Button, message } from 'antd';
+import {Steps} from 'antd';
 
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from '../../actions/cartActions'
-import Recipe from './Recipe';
+//import Recipe from './Recipe';
 
 import "antd/dist/antd.css";
 import {InputNumber} from 'antd';
@@ -53,7 +53,7 @@ class Cart extends Component{
         const { current } = this.state;
         const min=1;
         const max=10;
-        const defaultvalue=1;
+        //const defaultvalue=1;
 
         
         console.info(this.props);

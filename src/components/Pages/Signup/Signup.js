@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 import './Signup.css';
 
 export default class Signup extends Component{
@@ -46,7 +46,7 @@ export default class Signup extends Component{
           }).then(response => {
               return response.json();
             }).then( data=>{
-                if(data.MessageTypeID ==0){
+                if(data.MessageTypeID ===0){
                     this.setState(prevState =>({ emailmodal:!prevState.emailmodal}));
                     this.setState({ email:''});
                     document.getElementById("email").reset();
@@ -79,7 +79,7 @@ export default class Signup extends Component{
           }).then(response => {
               return response.json();
             }).then( data=>{
-                if(data.MessageTypeID ==1){
+                if(data.MessageTypeID ===1){
                     this.setState(prevState =>({ welcomemodal:!prevState.welcomemodal}));
                 }
 

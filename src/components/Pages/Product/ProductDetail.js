@@ -49,7 +49,7 @@ class ProductDetail extends Component{
             iD: values.iD
        }
 
-       fetch('http://localhost:8000/api/product/getproduct', {
+       fetch('http://productservices.jx-staging.35.231.104.48.nip.io/api/product/getproduct', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",
@@ -76,7 +76,7 @@ class ProductDetail extends Component{
         }) 
       }
         )
-      .catch((error) => { console.log("error");});
+      .catch((error) => { console.log(error);});
 
       }
    

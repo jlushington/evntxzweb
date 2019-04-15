@@ -3,9 +3,7 @@ import {BrowserRouter  as Router, Route} from 'react-router-dom';
 import './App.css';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import {connect} from 'react-redux';
 
-import {addToCart} from './actions/cartActions';
 
 //PAGES
 import Home from './Pages/Home/Home';

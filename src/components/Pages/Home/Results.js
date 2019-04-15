@@ -14,7 +14,7 @@ export default class Results extends Component{
 
       componentDidMount() {
         console.info("this is that");
-        fetch('http://localhost:8000/api/product/listlatestproducts')
+        fetch('http://productservices.jx-staging.35.231.104.48.nip.io/api/product/listlatestproducts')
         .then(response=>{
             return response.json();
         }).then(data=>{
@@ -41,7 +41,7 @@ export default class Results extends Component{
                             <a href={"http://localhost:8080/productdetail/"+prod.iD}>
                                 {
                                 prod.eventImage.map(imgd => 
-                                    <img className="pic-1" src={imgd.imageLoc} />
+                                    <img className="pic-1" src={imgd.imageLoc}  alt="image001"/>
                                 )}
                             </a>
                             <ul className="social">
