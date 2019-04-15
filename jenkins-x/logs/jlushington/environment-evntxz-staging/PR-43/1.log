@@ -1,14 +1,9 @@
 Step: build-step-credential-initializer:
 
-{"level":"warn","ts":1555284805.7887414,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1555284805.7896898,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Unable to retrieve container logs for docker://1c8db52cde1a656cf0a479658121666564191922f28701537bb7c5820650a40b
 Step: build-step-git-source-0:
 
-{"level":"warn","ts":1555284807.2630622,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1555284807.4928362,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jlushington/environment-evntxz-staging.git\" @ \"60778ca7bbf29a0e976fcb4a9ae6dddcae3c4734\" in path \"/workspace\""}
+Unable to retrieve container logs for docker://bb80d9c9a2946e2d3ddd5790dd235e2c6a366b99f19b505247b416c4cd3a7567
 Step: build-step-build:
 
-Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
-Successfully added Helm repository jenkins-x.
-Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
-Successfully added Helm repository releases.
+Unable to retrieve container logs for docker://a327f535ca81c726c824ab62472eb63ad682df86f28e5a1365c376dca5105b27
