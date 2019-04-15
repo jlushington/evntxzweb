@@ -3,5 +3,4 @@ ENV PORT 8080
 EXPOSE 8080
 WORKDIR /usr/src/app
 COPY . .
-CMD ["npm", "install"]
 CMD ["npm", "start"]
