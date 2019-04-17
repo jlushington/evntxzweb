@@ -55,6 +55,7 @@ export default class Login extends Component{
 
                     //redirect to Home
                     return <Redirect to='/' />
+                    window.location = 'http://google.com'
                 }
                 console.info(data);
             }).catch((error) => {
