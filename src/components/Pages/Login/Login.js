@@ -48,16 +48,13 @@ export default class Login extends Component{
                 if(data.MessageTypeID ===0){
                     this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
                 }else{
-                    console.info(data)
                     localStorage.setItem('authtoken', data.Message);
                     //this.state.setState({isAuth:true});
                     localStorage.setItem('isAuth', true);
 
                     //redirect to Home
-                    return <Redirect to='/' />
-                    window.location = 'http://google.com'
+                    window.location.replace("http://evntxzcp.jx-staging.35.231.104.48.nip.io/");
                 }
-                console.info(data);
             }).catch((error) => {
                 console.log(error);
             });
