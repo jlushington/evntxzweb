@@ -44,12 +44,13 @@ class ProductDetail extends Component{
     
     componentDidMount() {
        const values= this.props.match.params;
+       console.info(values);
 
        const data = {
             iD: values.iD
        }
 
-       fetch('http://productservices.jx-staging.35.231.104.48.nip.io/api/product/getproduct', {
+       fetch('http://localhost:8000/api/product/getproduct', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",

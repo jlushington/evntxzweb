@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-
-import { Redirect } from 'react-router-dom';
-//import Route from '../../Common/Redirect';
+import idGen from '../../Common/idGen';
 
 export default class Login extends Component{
 
@@ -33,7 +31,7 @@ export default class Login extends Component{
         event.preventDefault();
         const data = {password:this.state.password, email:this.state.email};
 
-        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/auth/authaction', {
+        fetch('http://localhost:8100/api/auth/authaction', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -48,37 +46,39 @@ export default class Login extends Component{
                 if(data.MessageTypeID ===0){
                     this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
                 }else{
-                    localStorage.setItem('authtoken', data.Message);
-                    //this.state.setState({isAuth:true});
-                    localStorage.setItem('isAuth', true);
+                    var cuid = require('cuid');
+                    var fingerprint = require('browser-fingerprint')()
 
-                    //redirect to Home
-                    window.location.replace("http://evntxzcp.jx-staging.35.231.104.48.nip.io/");
+                    const tokenpayload ={
+                        randomToken: cuid(),
+                        authToken: data.Message,
+                        fingerPrint: fingerprint
+                    }
+                    fetch('http://localhost:8100/api/auth/tokentransfer', {
+                         method: 'POST',
+                          crossDomain:true,
+                          mode:"cors",
+                          headers: { 'Accept': 'application/json, text/plain, */*','Content-Type': 'application/json','Access-Control-Allow-Origin':'*','Authorization':data.Message},
+                          body:  JSON.stringify(tokenpayload)
+                        }).then(response => {
+                            return response.json();
+                        }).then( data=>{
+                            if(data.MessageTypeID ===0){
+                                console.info("error");
+                            }else{
+                                console.info(tokenpayload);
+                                window.location.replace("http://localhost:8081/"+tokenpayload.randomToken);
+                            }
+                }).catch((error) => {
+                    console.log(error);
+                });
                 }
             }).catch((error) => {
                 console.log(error);
             });
       }
 
-      componentDidMount() {
-
-        if(localStorage.getItem("infiniteScrollEnabled") === null){
-
-        }else{
-            //this.state.isAuth= localStorage.getItem('isAuth');
-
-            /*
-            <Route
-            path="/privacy-policy"
-            component={ Redirect }
-            loc="http://evntxzcp.jx-staging.35.231.104.48.nip.io/"
-            />
-            */
-        }
-
-        
-    }
-
+     
 
     render(){
         return(

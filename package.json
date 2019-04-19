@@ -5,7 +5,9 @@
   "dependencies": {
     "antd": "^3.16.2",
     "bootstrap": "^4.3.1",
+    "browser-fingerprint": "^0.1.0",
     "compression": "^1.7.4",
+    "cuid": "^2.1.6",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.5.1",
