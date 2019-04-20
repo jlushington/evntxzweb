@@ -12,6 +12,8 @@ import Login from './Pages/Login/Login';
 import ProductDetail from './Pages/Product/ProductDetail';
 import Cart from './Pages/Cart/Cart';
 import CheckOut from './Pages/Cart/CheckOut';
+import Payment from './Pages/Payment/Payment';
+import PaymentCancel from './Pages/Payment/Cancel';
 
 class App extends Component {
 
@@ -32,6 +34,10 @@ class App extends Component {
           <Route path="/productdetail/:iD" exact component={ProductDetail}></Route>
           <Route path="/cart" component={Cart}/>
           <Route path="/checkout" component={CheckOut}/>
+          <Route path="/payment" component={Payment}/>
+          <Route path="/paymentcancel" component={PaymentCancel}/>
+
+         
       
 
         

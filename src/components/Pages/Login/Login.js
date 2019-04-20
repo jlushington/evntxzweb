@@ -67,7 +67,7 @@ export default class Login extends Component{
                                 console.info("error");
                             }else{
                                 console.info(tokenpayload);
-                                window.location.replace("http://localhost:8081/"+tokenpayload.randomToken);
+                                window.location.replace("http://localhost:8081/callback/"+tokenpayload.randomToken);
                             }
                 }).catch((error) => {
                     console.log(error);
