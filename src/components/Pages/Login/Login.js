@@ -54,6 +54,10 @@ export default class Login extends Component{
                         authToken: data.Message,
                         fingerPrint: fingerprint
                     }
+
+                    localStorage.setItem("authToken", data.Message);
+                    localStorage.setItem("isAuth", true);
+
                     fetch('http://localhost:8100/api/auth/tokentransfer', {
                          method: 'POST',
                           crossDomain:true,

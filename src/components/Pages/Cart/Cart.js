@@ -24,6 +24,7 @@ class Cart extends Component{
         this.state = {
           current: 0,
         };
+        this.handleClick= this.handleClick.bind(this);
       }
 
       next() {
@@ -49,6 +50,29 @@ class Cart extends Component{
     handleSubtractQuantity = (id)=>{
         this.props.subtractQuantity(id);
     }
+
+    handleClick = ()=>{
+
+        const isAuth=localStorage.getItem("isAuth");
+        const authToken=localStorage.getItem("authToken");
+        console.info(isAuth);
+        console.info(authToken);
+        
+        
+        if(isAuth){
+            if(authToken===null){
+                window.location.replace("http://localhost:8080/checkout");
+            }else{
+                window.location.replace("http://localhost:8080/payment");  
+            }
+        }else{
+            window.location.replace("http://localhost:8080/checkout");
+        }
+        
+        
+  
+    }
+
     render(){
         const { current } = this.state;
         const min=1;
@@ -140,7 +164,7 @@ class Cart extends Component{
                                         <div className="row"><div className="col-md-8 col-sm-8 p-b-50">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD $290.00</div></div>
 
                                         <div className="row"><div className="col-md-10 col-sm-10 font-75 color-white font-light">
-                                            <a class="linkbutton font-regular font-75" href="/checkout">CHECKOUT</a>
+                                            <button onClick={()=>{this.handleClick()}}>CHECKOUT</button>
                                         </div></div>
                                     </div>
                                 </div>
