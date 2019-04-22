@@ -13,7 +13,6 @@ export default class Results extends Component{
       }
 
       componentDidMount() {
-        console.info("this is that");
         fetch('http://localhost:8000/api/product/listlatestproducts',{
             crossDomain:true,
             mode:"cors",
@@ -38,7 +37,6 @@ export default class Results extends Component{
 
     render(){
         const prods = this.state.products;
-        console.info(prods);
 
         return(
             <div className="container pb-5">

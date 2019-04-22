@@ -2,8 +2,41 @@ import React, {Component} from 'react';
 
 
 export default class Banner extends Component{
+    
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            products:[]
+        }
+      }
+    
+      componentDidMount() {
+        console.info("Banner->componentDidMount");
+        fetch('http://localhost:8000/api/product/list3latestimages',{
+            crossDomain:true,
+            mode:"cors",
+            headers: { 'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        }
+        }
+        
+        
+        )
+        .then(response=>{
+            return response.json();
+        }).then(data=>{
+            console.info("Banner->componentDidMount->response");
+            this.setState({products: data});
+        }).catch((error) => {
+            console.log("error");
+        });
+      }
 
     render(){
+        const prods = this.state.products;
+        console.info(prods);
         return(
             <div className="row pt-3">
             <div className="col-sm-1 social text-left pr-2">
@@ -18,9 +51,11 @@ export default class Banner extends Component{
             <div className="col-sm-8 pb-3">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
-                        <div className="carousel-item active"><img className="d-block w-100" src="https://dummyimage.com/750x350/ff3b3e/a9a9a9" alt="{Los Angeles}" /></div>
-                        <div className="carousel-item"><img className="d-block w-100" src="https://dummyimage.com/750x350/00B2EE/a9a9a9" alt="{Los Angeles}" /></div>
-                        <div className="carousel-item"><img className="d-block w-100" src="https://dummyimage.com/750x350/3063A5/a9a9a9" alt="{Los Angeles}" /></div>
+                    {
+                  
+                  prods.map(prod =>
+                        <div className="carousel-item active"><img height="350px" className="d-block w-100" src={prod.imageLoc} alt="{Los Angeles}" /></div>
+                  )}
                     </div>
                 </div>
             </div>

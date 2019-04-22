@@ -122,6 +122,13 @@ body {
 .h-50{
   height:50px;
 }
+.h-500{
+  height:500px;
+}
+.h-750{
+  height:750px;
+}
+
 .h-100{
   display:block;
   height:100px;

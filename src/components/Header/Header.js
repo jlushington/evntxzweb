@@ -15,10 +15,8 @@ export default class Header extends Component{
                             <ul>
                                 <li className="fas fa-align-justify pt-3 color-grey"><a href="{#}">&nbsp;</a></li>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="{#}">Events</a></li>
-                                <li><a href="{#}">Venue</a></li>
-                                <li><a href="{#}">Help</a></li>
-
+                                <li><a href="/events">Events</a></li>
+                                <li><a href="/venue">Venue</a></li>
                             </ul>
                         </div>
                         <div className="col-sm-4 font-logo">Evntxz</div>
