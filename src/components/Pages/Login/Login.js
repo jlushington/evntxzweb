@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import idGen from '../../Common/idGen';
 
 export default class Login extends Component{
 

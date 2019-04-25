@@ -16,7 +16,16 @@ class CheckOut extends Component{
         super(props);
         this.state = {
           current: 1,
+          email:'',
+          password:'',
+          guestemail:''
         };
+
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+        this.handleGuestSubmit = this.handleGuestSubmit.bind(this);
+        this.toggle = this.toggle.bind(this);
+        const headers= new Headers();
+        headers.append('Content-Type', 'application/json');
       }
 
       next() {
@@ -28,6 +37,52 @@ class CheckOut extends Component{
         const current = this.state.current - 1;
         this.setState({ current });
       }
+
+      toggle() {
+        this.setState(prevState => ({
+            loginmodal: !prevState.loginmodal
+        }));
+      }
+
+    handleChange = (e)=>{
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleLoginSubmit(event){
+        event.preventDefault();
+        const data = {password:this.state.password, email:this.state.email};
+
+        fetch('http://localhost:8100/api/auth/authaction', {
+            method: 'POST',
+            crossDomain:true,
+            mode:"cors",
+            headers: { 'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        },
+            body:  JSON.stringify(data)
+          }).then(response => {
+            return response.json();
+        }).then(data=>{
+
+            if(data.MessageTypeID ===0){
+                this.setState(prevState =>({ loginmodal:!prevState.loginmodal}));
+            }else{
+                
+                localStorage.setItem("authToken", data.Message);
+                localStorage.setItem("isAuth", true);
+                window.location.replace("http://localhost:8080/payment");  
+            }
+
+        }).catch((error) => {
+            console.log("error");
+        });
+    }
+
+    handleGuestSubmit(event){
+        event.preventDefault();
+        const data = {guestemail:this.state.guestemail};
+    }
 
     render(){
         const { current } = this.state;
@@ -54,7 +109,7 @@ class CheckOut extends Component{
                             <div className="col-md-12 col-xs-12">
                                 <div className="row"><div className="col-md-12 col-xs-12 font-75 font-regular p-b-25 p-t-25">Please enter your email and password below to access your account</div></div>
                                 <div className="row"><div className="col-md-12 col-xs-12">
-                                <form onSubmit={this.handleSubmit}>
+                                <form onSubmit={this.handleLoginSubmit}>
                             <div className="p-b-25">
                                 <div className="font-75 font-regular align-left">Email</div>
                                 <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChange}/>
@@ -86,14 +141,10 @@ class CheckOut extends Component{
                             <div className="col-md-12 col-xs-12">
                                 <div className="row"><div className="col-md-12 col-xs-12 font-75 font-regular p-b-25 p-t-25">PLease Enter all the information </div></div>
                                 <div className="row"><div className="col-md-12 col-xs-12">
-                                <form onSubmit={this.handleSubmit}>
+                                <form onSubmit={this.handleGuestSubmit}>
                             <div className="p-b-25">
                                 <div className="font-75 font-regular align-left">Email</div>
-                                <input id="email" name="email" type="email" onChange={this.handleChange} onBlur={this.handleChange}/>
-                            </div>
-                            <div className="p-b-25">
-                                <div className="font-75 font-regular align-left"> Password</div>
-                                <input id="password" name="password" type="password" onChange={this.handleChange} />
+                                <input id="guestemail" name="guestemail" type="email" onChange={this.handleChange} onBlur={this.handleChange}/>
                             </div>
                             <div align="center">
                                 <button className="btn btn-orange">Make Payment</button>

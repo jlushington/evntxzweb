@@ -38,6 +38,8 @@ class Cart extends Component{
       }
 
 
+
+
     //to remove the item completely
     handleRemove = (id)=>{
         this.props.removeItem(id);
@@ -57,10 +59,10 @@ class Cart extends Component{
         const authToken=localStorage.getItem("authToken");
         console.info(isAuth);
         console.info(authToken);
-        
-        
+
+  
         if(isAuth){
-            if(authToken===null){
+            if(authToken===null || authToken===undefined){
                 window.location.replace("http://localhost:8080/checkout");
             }else{
                 window.location.replace("http://localhost:8080/payment");  
@@ -68,7 +70,8 @@ class Cart extends Component{
         }else{
             window.location.replace("http://localhost:8080/checkout");
         }
-        
+      
+
         
   
     }
@@ -78,12 +81,14 @@ class Cart extends Component{
         const min=1;
         const max=10;
         //const defaultvalue=1;
-
-        
-        console.info(this.props);
         const items = this.props.items;
-        console.info("items");
-        console.info(items);
+
+        let totalAmount=0;
+
+        for(let i=0; i<items.length; i++){
+
+            totalAmount=items[i].quantity*items[i].ticket.ticketPricingAmount;
+        }
         return(
             <div className="container p-t-100 p-b-100">
 
@@ -156,12 +161,12 @@ class Cart extends Component{
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <div className="row"><div className="col-md-12 col-sm-12 font-bold font-125 p-b-50">SUMMARY</div></div>
-                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-25">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD $290.00</div></div>
+                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-25">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD ${totalAmount}.00</div></div>
 
                                         <div className="row"><div className="col-md-12 col-sm-12">TAX</div></div>
                                         <div className="row"><div className="col-md-12 col-sm-12 p-b-100 font-75">Standard tax rates will be applied based on the province/territory that you are shipping to.</div></div>
 
-                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-50">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD $290.00</div></div>
+                                        <div className="row"><div className="col-md-8 col-sm-8 p-b-50">SUBTOTAL</div><div className="col-md-4 col-sm-4">USD ${totalAmount}.00</div></div>
 
                                         <div className="row"><div className="col-md-10 col-sm-10 font-75 color-white font-light">
                                             <button onClick={()=>{this.handleClick()}}>CHECKOUT</button>
