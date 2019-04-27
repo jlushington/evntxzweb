@@ -39,7 +39,9 @@ export default class Payment extends Component{
 
     render(){
         return(
-            <div>Thank you</div>
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
             );
         }
     }

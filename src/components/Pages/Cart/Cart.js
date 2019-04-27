@@ -14,7 +14,7 @@ const Step = Steps.Step;
 const steps = [
     {title: 'Cart'}, 
     {title: 'Checkout'}, 
-    {title: 'Payment'}
+    {title: 'Thank You'}
 ];
 
 class Cart extends Component{
@@ -26,18 +26,6 @@ class Cart extends Component{
         };
         this.handleClick= this.handleClick.bind(this);
       }
-
-      next() {
-        const current = this.state.current + 1;
-        this.setState({ current });
-      }
-    
-      prev() {
-        const current = this.state.current - 1;
-        this.setState({ current });
-      }
-
-
 
 
     //to remove the item completely
@@ -100,7 +88,7 @@ class Cart extends Component{
                   </div>
 
 
-                  <div className="row  p-t-50">
+                  <div className="row p-t-50">
 
                      {/** CART INFORMATION**/}
                     <div className="col-md-8 col-sm-8">

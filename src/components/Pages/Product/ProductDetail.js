@@ -157,11 +157,11 @@ class ProductDetail extends Component{
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div></div>
                         <div class="row"><div className="col-md-12 col-sm-12 font-125">RATINGS + REVIEWS</div></div>
-                        <div class="row"><div className="col-md-12 col-sm-12font-75">Based on 675 reviews</div></div>
-                        <div class="row"><div className="col-md-12 col-sm-12 font-100"><a class="linkbutton font-regular font-75" href="/reviewadd">WRITE REVIEW</a></div></div>
+                        <div class="row"><div className="col-md-12 col-sm-12 font-75">Based on 675 reviews</div></div>
+                        <div class="row"><div className="col-md-12 col-sm-12 font-100 p-t-25 p-t-50"><a class="linkbutton font-regular font-75" href="/reviewadd">WRITE REVIEW</a></div></div>
 
                         {/** REVIEW BODY **/}
-                        <div class="row p-t-25">
+                        <div class="row p-t-50">
                             <div className="col-md-12 col-sm-12">
                                 
                                 <div class="card">

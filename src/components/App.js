@@ -13,6 +13,7 @@ import ProductDetail from './Pages/Product/ProductDetail';
 import Cart from './Pages/Cart/Cart';
 import CheckOut from './Pages/Cart/CheckOut';
 import Payment from './Pages/Payment/Payment';
+import PaymentSuccess from './Pages/Payment/PaymentSuccessful';
 import PaymentCancel from './Pages/Payment/Cancel';
 import Events from './Pages/Events/Events';
 import Venue from './Pages/Venue/Venue'
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path="/cart" component={Cart}/>
           <Route path="/checkout" component={CheckOut}/>
           <Route path="/payment" component={Payment}/>
+          <Route path="/paymentsuccessful" component={PaymentSuccess}/>
           <Route path="/paymentcancel" component={PaymentCancel}/>
           <Route path="/events" component={Events}/>
           <Route path="/venue" component={Venue}/>

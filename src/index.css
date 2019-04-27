@@ -86,6 +86,10 @@ body {
   color:#CAEBF2;
 }
 
+.color-green{
+  color:#32CD32;
+}
+
 .font-light{
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
@@ -99,6 +103,18 @@ body {
 .font-bold{
   font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+}
+
+.font-200{
+  font-size: 2rem; 
+}
+
+.font-300{
+  font-size: 3rem; 
+}
+
+.font-400{
+  font-size: 4rem; 
 }
 
 .font-125{

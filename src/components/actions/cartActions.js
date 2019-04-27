@@ -1,4 +1,10 @@
-import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY} from './action-types/cart-actions'
+import {CLEAR_CART, ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY} from './action-types/cart-actions'
+
+export const clearCart = (item)=>{
+    return {
+        type: CLEAR_CART
+    }
+}
 
 //add cart action
 export const addToCart= (item)=>{

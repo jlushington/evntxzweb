@@ -10,6 +10,48 @@ export default class Results extends Component{
         this.state = {
             products:[]
         }
+        this.handleAddWishlist= this.handleAddWishlist.bind(this);
+      }
+
+      handleAddWishlist = (prodid)=>{
+
+        //check if logged-in
+        const isAuth=localStorage.getItem("isAuth");
+        const authToken=localStorage.getItem("authToken");
+
+        const data = {
+            productID: prodid,
+            userID: authToken
+       }
+        
+        if(isAuth){
+            if(authToken===null || authToken===undefined){
+                window.location.replace("http://localhost:8080/checkout");
+            }else{
+
+                fetch('http://localhost:8000/api/wishlist/addtowishlist', {
+                    method: 'POST',
+                    crossDomain:true,
+                    mode:"cors",
+                    headers: { 'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin':'*'
+                },
+                    body:  JSON.stringify(data)
+                  })
+                  .then(response =>response.json())
+                  .then( data=>{
+                      //inital model
+                  }
+                    )
+                  .catch((error) => { console.log(error);});
+
+            }
+        }else{
+            window.location.replace("http://localhost:8080/checkout");
+        }
+      
+
       }
 
       componentDidMount() {
@@ -53,9 +95,9 @@ export default class Results extends Component{
                                 )}
                             </a>
                             <ul className="social">
-                                <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                                <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="" data-tip="Location"><i class="fas fa-map-marker-alt"></i></a></li>
+                                <li><a href="" data-tip="Add to Wishlist" onClick={()=>{this.handleAddWishlist(prod.iD)}}><i class="fa fa-shopping-bag"></i></a></li>
+                                <li><a href={"http://localhost:8080/productdetail/"+prod.iD} data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                             {/*
                             <span className="product-new-label">Sale</span>
@@ -74,6 +116,11 @@ export default class Results extends Component{
                  )}
                 
             </div>
+
+
+
+
+            
         </div>
    
         );
