@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
 import "antd/dist/antd.css";
-import {InputNumber} from 'antd';
+import {InputNumber, Rate} from 'antd';
 import  './style.css'
 
 class ProductDetail extends Component{
@@ -22,7 +22,9 @@ class ProductDetail extends Component{
             eventPricing:[],
             eventImage:[]
             },
-            quantity:1
+            quantity:1,
+            productID:'',
+            reviews:[]
         };
         this.handleClick= this.handleClick.bind(this);
       }
@@ -45,6 +47,7 @@ class ProductDetail extends Component{
     componentDidMount() {
        const values= this.props.match.params;
        console.info(values);
+       this.setState({productID:values.iD})
 
        const data = {
             iD: values.iD
@@ -79,6 +82,27 @@ class ProductDetail extends Component{
         )
       .catch((error) => { console.log(error);});
 
+      
+      const datareview = {
+        productID: values.iD
+   }
+
+      fetch('http://localhost:8000/api/review/getreview', {
+        method: 'POST',
+        crossDomain:true,
+        mode:"cors",
+        headers: { 'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'},
+        body:  JSON.stringify(datareview)
+      })
+      .then(response =>response.json())
+      .then( data=>{
+          console.info(data);
+        this.setState({reviews:data}) 
+      })
+      .catch((error) => { console.log(error);});
+
       }
    
 
@@ -88,6 +112,14 @@ class ProductDetail extends Component{
         const min=1;
         const max=10;
         const defaultvalue=1;
+        const reviews = this.state.reviews;
+        var reviewAvg=0;
+        var reviewCount=1;
+
+        for(var i=0; i<reviews.length; i++){
+            reviewCount=reviewCount+i;
+             reviewAvg=reviewAvg+Number(reviews[i].reviewValue);
+        }
 
 
         return (
@@ -150,60 +182,38 @@ class ProductDetail extends Component{
 
                         {/** REVIEW HEADER **/}
                         <div class="row"><div className="col-md-12 col-sm-12 font-125">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                        <Rate allowHalf value={reviewAvg/reviewCount} />
                         </div></div>
                         <div class="row"><div className="col-md-12 col-sm-12 font-125">RATINGS + REVIEWS</div></div>
-                        <div class="row"><div className="col-md-12 col-sm-12 font-75">Based on 675 reviews</div></div>
-                        <div class="row"><div className="col-md-12 col-sm-12 font-100 p-t-25 p-t-50"><a class="linkbutton font-regular font-75" href="/reviewadd">WRITE REVIEW</a></div></div>
+                        <div class="row"><div className="col-md-12 col-sm-12 font-75">Based on {reviewCount} reviews</div></div>
+                        <div class="row"><div className="col-md-12 col-sm-12 font-100 p-t-25 p-t-50"><a class="linkbutton font-regular font-75" href={"/reviewadd/"+this.state.productID}>WRITE REVIEW</a></div></div>
 
                         {/** REVIEW BODY **/}
-                        <div class="row p-t-50">
+                        {
+                            reviews.map(review =>
+              
+                                    
+                        <div class="row p-t-25">
                             <div className="col-md-12 col-sm-12">
                                 
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <div class="row"><div className="col-md-4 col-sm-4">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <Rate value={review.reviewValue} />
                                         </div></div>
-                                        <div class="row"><div className="col-md-4 col-sm-4">Smooth Sailing</div></div>
-                                        <div class="row"><div className="col-md-4 col-sm-4">Tracee on Jun 23, 2018</div></div>
-                                        <div class="row"><div className="col-md-12 col-sm-12">I went on a cruise with my bf and thank goodness I had the forethought to pick 
-                                        some poo-pourri up at a local store before the trip! Its work and it works well. Just ordered the purse size cant wait for it to arrive! 
-                                        I wont ever take a vacation or travel on business without my poo-pourri !</div></div>
+                                        
+                                        <div class="row"><div className="col-md-4 col-sm-4">{review.dateCreated}</div></div>
+                                        <div class="row"><div className="col-md-12 col-sm-12">{review.reviewComment}</div></div>
                                     </div>
                                 </div>
                                 
                             </div>
                         </div>
+                        )}
 
                         <div class="row p-t-10 p-b-100">
                             <div className="col-md-12 col-sm-12">
-                                
-                                <div class="card">
-                                    <div class="card-body text-left">
-                                        <div class="row"><div className="col-md-4 col-sm-4">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </div></div>
-                                        <div class="row"><div className="col-md-4 col-sm-4">Smooth Sailing</div></div>
-                                        <div class="row"><div className="col-md-4 col-sm-4">Tracee on Jun 23, 2018</div></div>
-                                        <div class="row"><div className="col-md-12 col-sm-12">I went on a cruise with my bf and thank goodness I had the forethought to pick 
-                                        some poo-pourri up at a local store before the trip! Its work and it works well. Just ordered the purse size cant wait for it to arrive! 
-                                        I wont ever take a vacation or travel on business without my poo-pourri !</div></div>
-                                    </div>
-                                </div>
-                                
+
                             </div>
                         </div>
                     

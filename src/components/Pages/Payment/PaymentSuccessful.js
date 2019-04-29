@@ -20,14 +20,51 @@ class PaymentSuccess extends Component{
           current: 2,
         };
     }
+
+    parseurl(){
+        var str = window.location.search;
+        var objURL = {};
+
+        str.replace(
+        new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+        function( $0, $1, $2, $3 ){
+            objURL[ $1 ] = $3;
+        }
+    );
+    return objURL;
+
+    }
     componentDidMount() {
 
-        //CHECK IF PAYPAL PAYMENT IS SUCCESSFUL
 
-        //CLEAR REDUX
-        const blank={};
-        console.info("PaymentSuccess->componentWillUnmount");
-        this.props.clearCart(blank);
+        //CHECK IF PAYPAL PAYMENT IS SUCCESSFUL
+        var params = this.parseurl();
+        const payload ={
+            paymentID: params["paymentId"],
+            paymentToken: params["token"],
+            payerID: params["PayerID"]
+
+        }
+
+        fetch('http://localhost:8002/api/purchase/purchasesuccessful', {
+            method: 'POST',
+            crossDomain:true,
+            mode:"cors",
+            headers: { 'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        },
+            body:  JSON.stringify(payload)
+          })
+          .then(response =>response.json())
+          .then( data=>{
+              console.info(data);
+                //CLEAR REDUX
+                const blank={};
+                console.info("PaymentSuccess->componentWillUnmount");
+                this.props.clearCart(blank);   
+          })
+          .catch((error) => { console.log(error);});
 
     }
 

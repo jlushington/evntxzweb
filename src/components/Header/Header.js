@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import {Avatar, Badge} from 'antd';
 import './Header.css';
 
-export default class Header extends Component{
+class Header extends Component{
 
     render(){
+        const items = this.props.items;
+
+        var cartQuantity=0;
+
+        for(let i=0; i<items.length; i++){
+            cartQuantity=cartQuantity+items[i].quantity;
+            }
+
         return(
             <header className="masthead mb-auto">
                 <div className="container">
@@ -25,7 +34,7 @@ export default class Header extends Component{
                                     <li><a href="/signup">Signup</a></li>
                                     <li><a className="active" href="/login">Login</a></li>
                                     <li className="fas color-grey">
-                                        <a href="/cart"><span style={{ marginRight: 24 }}><Badge count={1}><Avatar shape="square" icon="shopping-cart" /></Badge></span></a>
+                                        <a href="/cart"><span style={{ marginRight: 24 }}><Badge count={cartQuantity}><Avatar shape="square" icon="shopping-cart" /></Badge></span></a>
                                     </li>    
                                 </ul>
                             </div>
@@ -35,3 +44,16 @@ export default class Header extends Component{
         );
     }
 }
+
+const mapStateToProps = (state)=>{
+    return{
+        items: state.addedItems,
+        //addedItems: state.addedItems
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Header)

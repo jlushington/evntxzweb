@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Search from '../Home/Search'
+import {Checkbox} from 'antd';
 
 
 export default class Events extends Component{
@@ -66,17 +67,17 @@ export default class Events extends Component{
                 <div className="row">
 
                     {/** LEFT **/}
-                    <div className="col-md-4 col-xs-4">
+                    <div className="col-md-3 col-xs-3 float-left text-left">
                         <div className="row"><div className="col-md-12 col-xs-12"><h2>VENUE TYPE</h2></div></div>
                         {
                         venuetypes.map(venuetype => 
-                            <div className="row"><div className="col-md-12 col-xs-12">{venuetype.locationTypeName}</div></div>
+                            <div className="row p-b-10"><div className="col-md-12 col-xs-12"><Checkbox>{venuetype.locationTypeName}</Checkbox></div></div>
                         )}
 
                     </div>
 
                     {/** RIGHT **/}
-                    <div className="col-md-8 col-xs-8">
+                    <div className="col-md-9 col-xs-9">
 
 
                     <div className="row">

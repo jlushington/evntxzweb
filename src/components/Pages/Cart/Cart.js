@@ -70,12 +70,13 @@ class Cart extends Component{
         const max=10;
         //const defaultvalue=1;
         const items = this.props.items;
+        console.info(items);
 
         let totalAmount=0;
 
         for(let i=0; i<items.length; i++){
 
-            totalAmount=items[i].quantity*items[i].ticket.ticketPricingAmount;
+            totalAmount=(totalAmount+(items[i].quantity*items[i].ticket.ticketPricingAmount));
         }
         return(
             <div className="container p-t-100 p-b-100">

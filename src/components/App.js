@@ -18,6 +18,7 @@ import PaymentCancel from './Pages/Payment/Cancel';
 import Events from './Pages/Events/Events';
 import Venue from './Pages/Venue/Venue'
 import Help from './Pages/Help/Help';
+import ReviewAdd from './Pages/Review/ReviewAdd';
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
           <Route path="/login" exact component={Login}></Route>
           <Route path="/productdetail/:iD" exact component={ProductDetail}></Route>
           <Route path="/cart" component={Cart}/>
+          <Route path="/reviewadd/:iD" component={ReviewAdd}/>
           <Route path="/checkout" component={CheckOut}/>
           <Route path="/payment" component={Payment}/>
           <Route path="/paymentsuccessful" component={PaymentSuccess}/>
