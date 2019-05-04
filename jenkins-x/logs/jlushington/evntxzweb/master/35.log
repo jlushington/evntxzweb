@@ -1,0 +1,163 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1556995024.010818,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1556995024.011276,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1556995025.7100756,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1556995026.1115036,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jlushington/evntxzweb.git\" @ \"878841be001f55937e9bcaa8095006e16079864d\" in path \"/workspace\""}
+Step: build-step-jenkins:
+
+Picked up _JAVA_OPTIONS: -Xmx400m
+  14.882 [id=20]	WARNING	c.c.j.p.k.KubernetesCredentialProvider#convertSecret: Failed to convert Secret 'kaniko-secret' of type secretText due to secretText credential is missing the text
+Started
+Running in Durability level: PERFORMANCE_OPTIMIZED
+  20.161 [id=26]	WARNING	i.f.k.c.i.VersionUsageUtils#alert: The client is using resource type 'customresourcedefinitions' with unstable version 'v1beta1'
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /tmp/jenkinsTests.tmp/jenkins3634066961480701744test/workspace/job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (CI Build and push snapshot)
+Stage "CI Build and push snapshot" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Release)
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/jlushington/evntxzweb.git # timeout=10
+Fetching upstream changes from https://github.com/jlushington/evntxzweb.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/jlushington/evntxzweb.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 878841be001f55937e9bcaa8095006e16079864d (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 878841be001f55937e9bcaa8095006e16079864d
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 878841be001f55937e9bcaa8095006e16079864d
+Commit message: "environment switches"
+First time build. Skipping changelog.
+[Pipeline] sh
++ jx-release-version
++ echo 0.0.25
+[Pipeline] sh
++ cat VERSION
++ jx step tag --version 0.0.25
+Tag v0.0.25 created and pushed to remote origin
+[Pipeline] sh
++ npm set progress=false
+[Pipeline] sh
++ npm install
+npm WARN notice [SECURITY] webpack-dev-server has the following vulnerability: 1 high. Go here for more details: https://nodesecurity.io/advisories?search=webpack-dev-server&version=2.9.4 - Run `npm i npm@latest -g` to upgrade your npm version, and then `npm audit` to get more info.
+
+> uglifyjs-webpack-plugin@0.4.6 postinstall /tmp/jenkinsTests.tmp/jenkins3634066961480701744test/workspace/job/node_modules/uglifyjs-webpack-plugin
+> node lib/post_install.js
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 1457 packages in 28.161s
+[Pipeline] sh
++ CI=true DISPLAY=:99 npm test
+
+> evntxz-web@0.1.0 test /tmp/jenkinsTests.tmp/jenkins3634066961480701744test/workspace/job
+> react-scripts test --env=jsdom
+
+ FAIL  src/components/App.test.js
+  ● renders without crashing
+
+    Invariant Violation: Could not find "store" in the context of "Connect(Header)". Either wrap the root component in a <Provider>, or pass a custom React context provider to <Provider> and the corresponding React context consumer to Connect(Header) in connect options.
+      
+      at invariant (node_modules/invariant/invariant.js:40:15)
+      at ConnectFunction (node_modules/react-redux/lib/components/connectAdvanced.js:154:33)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:12938:18)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom.development.js:14627:20)
+      at updateSimpleMemoComponent (node_modules/react-dom/cjs/react-dom.development.js:14573:10)
+      at updateMemoComponent (node_modules/react-dom/cjs/react-dom.development.js:14492:14)
+      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:15689:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:19312:12)
+      at workLoop (node_modules/react-dom/cjs/react-dom.development.js:19352:24)
+      at renderRoot (node_modules/react-dom/cjs/react-dom.development.js:19435:7)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:20342:7)
+      at performWork (node_modules/react-dom/cjs/react-dom.development.js:20254:7)
+      at performSyncWork (node_modules/react-dom/cjs/react-dom.development.js:20228:3)
+      at requestWork (node_modules/react-dom/cjs/react-dom.development.js:20097:5)
+      at scheduleWork (node_modules/react-dom/cjs/react-dom.development.js:19911:5)
+      at scheduleRootUpdate (node_modules/react-dom/cjs/react-dom.development.js:20572:3)
+      at updateContainerAtExpirationTime (node_modules/react-dom/cjs/react-dom.development.js:20600:10)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:20657:10)
+      at ReactRoot.Object.<anonymous>.ReactRoot.render (node_modules/react-dom/cjs/react-dom.development.js:20953:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:21090:14
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:20459:10)
+      at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:21086:5)
+      at Object.render (node_modules/react-dom/cjs/react-dom.development.js:21155:12)
+      at Object.<anonymous>.it (src/components/App.test.js:7:22)
+          at new Promise (<anonymous>)
+      at Promise.resolve.then.el (node_modules/p-map/index.js:46:16)
+          at <anonymous>
+
+  ✕ renders without crashing (48ms)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        5.225s
+Ran all test suites.
+  console.info src/components/Pages/Home/Banner.js:40
+    []
+
+  console.error node_modules/react-dom/cjs/react-dom.development.js:506
+    Warning: Invalid DOM property `class`. Did you mean `className`?
+        in div (at Banner.js:53)
+        in div (at Banner.js:52)
+        in div (at Banner.js:42)
+        in Banner (at Home.js:13)
+        in div (at Home.js:12)
+        in Header (created by Context.Consumer)
+        in Route (at App.js:36)
+        in div (at App.js:33)
+        in Router (created by BrowserRouter)
+        in BrowserRouter (at App.js:32)
+        in App (at App.test.js:7)
+
+  console.error node_modules/react-dom/cjs/react-dom.development.js:17117
+    The above error occurred in the <ConnectFunction> component:
+        in ConnectFunction (at App.js:34)
+        in div (at App.js:33)
+        in Router (created by BrowserRouter)
+        in BrowserRouter (at App.js:32)
+        in App (at App.test.js:7)
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://fb.me/react-error-boundaries to learn more about error boundaries.
+
+npm ERR! Test failed.  See above for more details.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Promote to Environments)
+Stage "Promote to Environments" skipped due to earlier failure(s)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
