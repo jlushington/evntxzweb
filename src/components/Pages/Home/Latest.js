@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
+import {properties} from '../../../properties';
 
 
 export default class Latest extends Component{
@@ -14,7 +15,7 @@ export default class Latest extends Component{
 
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/product/list3latest',{
+        fetch(properties.productserviceurl+'/api/product/list3latest',{
             crossDomain:true,
             mode:"cors",
             headers: { 'Accept': 'application/json, text/plain, */*',

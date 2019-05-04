@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {properties} from '../../../properties';
 
 
 export default class Banner extends Component{
@@ -13,7 +14,7 @@ export default class Banner extends Component{
     
       componentDidMount() {
         console.info("Banner->componentDidMount");
-        fetch('http://localhost:8000/api/product/list3latestimages',{
+        fetch(properties.productserviceurl+'/api/product/list3latestimages',{
             crossDomain:true,
             mode:"cors",
             headers: { 'Accept': 'application/json, text/plain, */*',

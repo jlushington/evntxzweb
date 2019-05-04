@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { clearCart } from '../../actions/cartActions';
 import {Steps} from 'antd';
+import {properties} from '../../../properties';
 
 
 const Step = Steps.Step;
@@ -46,7 +47,7 @@ class PaymentSuccess extends Component{
 
         }
 
-        fetch('http://localhost:8002/api/purchase/purchasesuccessful', {
+        fetch(properties.paymentserviceurl+'/api/purchase/purchasesuccessful', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Rate } from 'antd';
+import {properties} from '../../../properties';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
@@ -31,13 +32,13 @@ export default class ReviewAdd extends Component{
 
         if(isAuth){
             if(authToken===null || authToken===undefined){
-                window.location.replace("http://localhost:8080/checkout");
+                window.location.replace(properties.weburl+"/checkout");
             }else{
                 this.setState({productID:values.iD}) 
                 this.setState({userID:authToken})  
             }
         }else{
-            window.location.replace("http://localhost:8080/checkout");
+            window.location.replace(properties.weburl+"/checkout");
         }
         
     }
@@ -56,7 +57,7 @@ export default class ReviewAdd extends Component{
             reviewComment:this.state.reviewComment
         }
 
-        fetch('http://localhost:8000/api/review/addreview', {
+        fetch(properties.productserviceurl+'/api/review/addreview', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",
@@ -72,7 +73,7 @@ export default class ReviewAdd extends Component{
        if(data.MessageTypeID ===0){
            console.info(data);
        }else{
-        window.location.replace("http://localhost:8080/productdetail/"+this.state.productID);
+        window.location.replace(properties.weburl+"/productdetail/"+this.state.productID);
 
        }
       })

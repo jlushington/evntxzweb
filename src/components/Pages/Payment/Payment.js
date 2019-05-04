@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Loading from 'react-fullscreen-loading';
+import {properties} from '../../../properties';
 
 export default class Payment extends Component{
 
@@ -14,7 +16,7 @@ export default class Payment extends Component{
             purchaseSum:"29.50"
         }
         
-       fetch('http://localhost:8002/api/purchase/purchase', {
+       fetch(properties.paymentserviceurl+'/api/purchase/purchase', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",
@@ -39,9 +41,7 @@ export default class Payment extends Component{
 
     render(){
         return(
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+            <Loading loading background="#FFFFFF" loaderColor="#3498db" />
             );
         }
     }

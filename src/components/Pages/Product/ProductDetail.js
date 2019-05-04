@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
 import "antd/dist/antd.css";
 import {InputNumber, Rate} from 'antd';
-import  './style.css'
+import  './style.css';
+import {properties} from '../../../properties';
 
 class ProductDetail extends Component{
 
@@ -53,7 +54,7 @@ class ProductDetail extends Component{
             iD: values.iD
        }
 
-       fetch('http://localhost:8000/api/product/getproduct', {
+       fetch(properties.productserviceurl+'/api/product/getproduct', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",
@@ -87,7 +88,7 @@ class ProductDetail extends Component{
         productID: values.iD
    }
 
-      fetch('http://localhost:8000/api/review/getreview', {
+      fetch(properties.productserviceurl+'/api/review/getreview', {
         method: 'POST',
         crossDomain:true,
         mode:"cors",

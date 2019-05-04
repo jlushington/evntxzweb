@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {Steps} from 'antd';
+import {properties} from '../../../properties';
 
 //import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from '../../actions/cartActions'
@@ -51,12 +52,12 @@ class Cart extends Component{
   
         if(isAuth){
             if(authToken===null || authToken===undefined){
-                window.location.replace("http://localhost:8080/checkout");
+                window.location.replace(properties.weburl+"/checkout");
             }else{
-                window.location.replace("http://localhost:8080/payment");  
+                window.location.replace(properties.weburl+"/payment");  
             }
         }else{
-            window.location.replace("http://localhost:8080/checkout");
+            window.location.replace(properties.weburl+"/checkout");
         }
       
 

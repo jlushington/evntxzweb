@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {properties} from '../../../properties';
 
 export default class Login extends Component{
 
@@ -30,7 +31,7 @@ export default class Login extends Component{
         event.preventDefault();
         const data = {password:this.state.password, email:this.state.email};
 
-        fetch('http://localhost:8100/api/auth/authaction', {
+        fetch(properties.userserviceurl+'/api/auth/authaction', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -57,7 +58,7 @@ export default class Login extends Component{
                     localStorage.setItem("authToken", data.Message);
                     localStorage.setItem("isAuth", true);
 
-                    fetch('http://localhost:8100/api/auth/tokentransfer', {
+                    fetch(properties.userserviceurl+'/api/auth/tokentransfer', {
                          method: 'POST',
                           crossDomain:true,
                           mode:"cors",
@@ -70,7 +71,7 @@ export default class Login extends Component{
                                 console.info("error");
                             }else{
                                 console.info(tokenpayload);
-                                window.location.replace("http://localhost:8081/callback/"+tokenpayload.randomToken);
+                                window.location.replace(properties.cpurl+"/callback/"+tokenpayload.randomToken);
                             }
                 }).catch((error) => {
                     console.log(error);

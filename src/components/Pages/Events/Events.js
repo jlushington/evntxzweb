@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Search from '../Home/Search'
 import {Checkbox} from 'antd';
+import {properties} from '../../../properties';
 
 
 export default class Events extends Component{
@@ -13,7 +14,7 @@ export default class Events extends Component{
     }
 
     componentDidMount() {
-        fetch('http://localhost:8005/api/locationtype/getalllocationtype',{
+        fetch(properties.locationserviceurl+'/api/locationtype/getalllocationtype',{
             crossDomain:true,
             mode:"cors",
             headers: { 'Accept': 'application/json, text/plain, */*',
@@ -30,7 +31,7 @@ export default class Events extends Component{
             console.log("error");
         });
 
-        fetch('http://localhost:8000/api/product/listlatestproducts',{
+        fetch(properties.productserviceurl+'/api/product/listlatestproducts',{
             crossDomain:true,
             mode:"cors",
             headers: { 'Accept': 'application/json, text/plain, */*',

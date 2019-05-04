@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { connect } from 'react-redux';
 import {Steps} from 'antd';
+import {properties} from '../../../properties';
 
 const Step = Steps.Step;
 
@@ -52,7 +53,7 @@ class CheckOut extends Component{
         event.preventDefault();
         const data = {password:this.state.password, email:this.state.email};
 
-        fetch('http://localhost:8100/api/auth/authaction', {
+        fetch(properties.userserviceurl+'/api/auth/authaction', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -71,7 +72,7 @@ class CheckOut extends Component{
                 
                 localStorage.setItem("authToken", data.Message);
                 localStorage.setItem("isAuth", true);
-                window.location.replace("http://localhost:8080/payment");  
+                window.location.replace(properties.weburl+"/payment");  
             }
 
         }).catch((error) => {
