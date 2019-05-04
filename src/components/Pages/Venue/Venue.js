@@ -4,9 +4,6 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 
 export class Venue extends Component{
-    constructor(props) {
-        super(props);
-    }
 
     render(){
         return(

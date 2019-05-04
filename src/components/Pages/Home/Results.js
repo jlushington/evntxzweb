@@ -96,7 +96,7 @@ export default class Results extends Component{
                             </a>
                             <ul className="social">
                                 <li><a href="" data-tip="Location"><i class="fas fa-map-marker-alt"></i></a></li>
-                                <li><a href="#" data-tip="Add to Wishlist" onClick={()=>{this.handleAddWishlist(prod.iD)}}><i class="fa fa-shopping-bag"></i></a></li>
+                                <li><a href="" data-tip="Add to Wishlist" onClick={()=>{this.handleAddWishlist(prod.iD)}}><i class="fa fa-shopping-bag"></i></a></li>
                                 <li><a href={"http://localhost:8080/productdetail/"+prod.iD} data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                             {/*

@@ -82,7 +82,7 @@ class CheckOut extends Component{
 
     handleGuestSubmit(event){
         event.preventDefault();
-        const data = {guestemail:this.state.guestemail};
+       // const data = {guestemail:this.state.guestemail};
     }
 
     render(){

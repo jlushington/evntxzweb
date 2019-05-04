@@ -4,9 +4,6 @@ import {properties} from '../../../properties';
 
 export default class Payment extends Component{
 
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
 
