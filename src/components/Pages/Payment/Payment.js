@@ -4,13 +4,25 @@ import {properties} from '../../../properties';
 
 export default class Payment extends Component{
 
+    constructor(props) {
+        super(props);
+      }
+
 
     componentDidMount() {
+
+        const items = this.props.items;
+        let totalAmount=0;
+
+        for(let i=0; i<items.length; i++){
+
+            totalAmount=(totalAmount+(items[i].quantity*items[i].ticket.ticketPricingAmount));
+        }
 
         const payload= {
             cartID: "5c7926c6d610e309f8d1716d",
             paymentAuthorize: "PAYPAL",
-            purchaseSum:"29.50"
+            purchaseSum:totalAmount
         }
         
        fetch(properties.paymentserviceurl+'/api/purchase/purchase', {

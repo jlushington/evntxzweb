@@ -15,6 +15,7 @@ export const properties={
     locationserviceurl:"http://locationservices.jx-staging.35.231.104.48.nip.io",
     productserviceurl:"http://productservices.jx-staging.35.231.104.48.nip.io",
     paymentserviceurl:"http://purchaseservices.jx-staging.35.231.104.48.nip.io"
+    
 
     
 
