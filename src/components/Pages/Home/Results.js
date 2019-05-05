@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
+import {properties} from '../../../properties';
 
 
 export default class Results extends Component{
@@ -26,10 +27,10 @@ export default class Results extends Component{
         
         if(isAuth){
             if(authToken===null || authToken===undefined){
-                window.location.replace("http://localhost:8080/checkout");
+                window.location.replace(properties.weburl+"/checkout");
             }else{
 
-                fetch('http://localhost:8000/api/wishlist/addtowishlist', {
+                fetch(properties.productserviceurl+'/api/wishlist/addtowishlist', {
                     method: 'POST',
                     crossDomain:true,
                     mode:"cors",
@@ -48,14 +49,14 @@ export default class Results extends Component{
 
             }
         }else{
-            window.location.replace("http://localhost:8080/checkout");
+            window.location.replace(properties.weburl+"/checkout");
         }
       
 
       }
 
       componentDidMount() {
-        fetch('http://localhost:8000/api/product/listlatestproducts',{
+        fetch(properties.productserviceurl+'/api/product/listlatestproducts',{
             crossDomain:true,
             mode:"cors",
             headers: { 'Accept': 'application/json, text/plain, */*',
@@ -88,7 +89,7 @@ export default class Results extends Component{
                 <div className="col-md-3 col-sm-6 p-0 h-100">
                     <div className="product-grid ">
                         <div className="product-image">
-                            <a href={"http://localhost:8080/productdetail/"+prod.iD}>
+                            <a href={properties.weburl+"/productdetail/"+prod.iD}>
                                 {
                                 prod.eventImage.map(imgd => 
                                     <img className="pic-1" src={imgd.imageLoc}  alt="image001"/>
@@ -97,7 +98,7 @@ export default class Results extends Component{
                             <ul className="social">
                                 <li><a href="" data-tip="Location"><i class="fas fa-map-marker-alt"></i></a></li>
                                 <li><a href="" data-tip="Add to Wishlist" onClick={()=>{this.handleAddWishlist(prod.iD)}}><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href={"http://localhost:8080/productdetail/"+prod.iD} data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href={properties.weburl+"/productdetail/"+prod.iD} data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                             {/*
                             <span className="product-new-label">Sale</span>
@@ -105,11 +106,11 @@ export default class Results extends Component{
                             */}
                         </div>
                         <div className="product-content">
-                            <h3 className="title"><a href={"http://localhost:8080/productdetail/"+prod.iD}>{prod.eventName}</a></h3>
+                            <h3 className="title"><a href={properties.weburl+"/productdetail/"+prod.iD}>{prod.eventName}</a></h3>
                             <div className="price">{prod.eventPricing[0].ticketPricingCurrency} ${prod.eventPricing[0].ticketPricingAmount}.00
                                 {/*<span>$20.00</span>*/}
                             </div>
-                            <a className="add-to-cart" href={"http://localhost:8080/productdetail/"+prod.iD}>+ Add To Cart</a>
+                            <a className="add-to-cart" href={properties.weburl+"/productdetail/"+prod.iD}>+ Add To Cart</a>
                         </div>
                     </div>
                 </div>
