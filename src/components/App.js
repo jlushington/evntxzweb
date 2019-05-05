@@ -46,14 +46,6 @@ class App extends Component {
           <Route path="/events" component={Events}/>
           <Route path="/venue" component={Venue}/>
           <Route path="/help" component={Help}/>
-
-          
-          
-
-         
-      
-
-        
         <Footer />
 
       </div>
