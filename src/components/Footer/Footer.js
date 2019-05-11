@@ -17,10 +17,9 @@ export default class Footer extends Component{
                                 </div> 
                                 <div className="col-sm-6">							
                                     <ul className="social-link pull-right">
-                                        <li><a href=""><span className="fab fa-facebook-square"></span></a></li>						
-                                        <li><a href=""><span className="fab fa-twitter-square"></span></a></li>
-                                        <li><a href=""><span className="fab fa-instagram"></span></a></li>
-                                        <li><a href=""><span className="fab fa-youtube"></span></a></li>
+                                        <li><a href="https://www.facebook.com/Evntxz-416532625564591/?modal=admin_todo_tour"><span className="fab fa-facebook-square"></span></a></li>						
+                                        <li><a href="https://www.instagram.com/evntxzinc"><span className="fab fa-instagram"></span></a></li>
+                                        <li><a href="https://www.youtube.com/channel/UCKdDQITIDtSHBqelWCXjd5g?disable_polymer=true"><span className="fab fa-youtube"></span></a></li>
                                     </ul>							
                                 </div> 
                             </div>

@@ -42,10 +42,9 @@ export default class Banner extends Component{
             <div className="row pt-3">
             <div className="col-sm-1 social text-left pr-2">
                 <ul>
-                    <li className="fab fa-facebook-square pt-3 color-red"><a href="{#}">&nbsp;</a></li>
-                    <li className="fab fa-twitter-square pt-3 color-red"><a href="{#}">&nbsp;</a></li>
-                    <li className="fab fa-instagram pt-3 color-red"><a href="{#}">&nbsp;</a></li>
-                    <li className="fab fa-youtube pt-3 color-red"><a href="{#}">&nbsp;</a></li>
+                    <li className="fab fa-facebook-square pt-3 color-red"><a href="https://www.facebook.com/Evntxz-416532625564591/?modal=admin_todo_tour">&nbsp;</a></li>
+                    <li className="fab fa-instagram pt-3 color-red"><a href="https://www.instagram.com/evntxzinc/">&nbsp;</a></li>
+                    <li className="fab fa-youtube pt-3 color-red"><a href="https://www.youtube.com/channel/UCKdDQITIDtSHBqelWCXjd5g?disable_polymer=true">&nbsp;</a></li>
                 </ul>
             </div>
             <div className="col-sm-1"></div>
