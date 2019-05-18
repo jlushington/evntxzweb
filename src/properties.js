@@ -6,7 +6,9 @@ export const properties={
     userserviceurl:"http://216.58.14.134:8100",
     locationserviceurl:"http://216.58.14.134:8005",
     productserviceurl:"http://216.58.14.134:8000",
-    paymentserviceurl:"http://216.58.14.134:8002"
+    paymentserviceurl:"http://216.58.14.134:8002",
+    cartserviceurl:"http://216.58.14.134:8010",
+
     
  /*
 

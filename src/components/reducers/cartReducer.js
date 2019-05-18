@@ -1,4 +1,4 @@
-import {CLEAR_CART, ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY} from '../actions/action-types/cart-actions'
+import {CLEAR_CART, ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, UPDATE_QUANTITY} from '../actions/action-types/cart-actions'
 
 const initState = {
     addedItems:[
@@ -80,17 +80,20 @@ const cartReducer= (state = initState,action)=>{
              }
     }
     if(action.type === REMOVE_ITEM){
-        let itemToRemove= state.addedItems.find(item=> action.id === item.id)
-        let new_items = state.addedItems.filter(item=> action.id !== item.id)
-        
+
+
+        const filteredItems = state.addedItems.slice(0, action.item).concat(state.addedItems.slice(action.item + 1, state.addedItems.length))
+
         //calculating the total
-        let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
-        console.log(itemToRemove)
+       let newTotal = state.total - (state.addedItems[action.item].quantity * state.addedItems[action.item].product.eventPricing[0].ticketPricingAmount )
+         
         return{
             ...state,
-            addedItems: new_items,
+            addedItems: filteredItems,
             total: newTotal
         }
+        
+        
     }
     //INSIDE CART COMPONENT
     if(action.type=== ADD_QUANTITY){
@@ -123,6 +126,12 @@ const cartReducer= (state = initState,action)=>{
             }
         }
         
+    }
+
+    if(action.type === UPDATE_QUANTITY){
+        //update
+        console.info(action);
+
     }
 
 

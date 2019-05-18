@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import Loading from 'react-fullscreen-loading';
 import {properties} from '../../../properties';
 
-export default class Payment extends Component{
+class Payment extends Component{
 
     constructor(props) {
         super(props);
@@ -11,7 +12,10 @@ export default class Payment extends Component{
 
     componentDidMount() {
 
+        console.info(this.props);
         const items = this.props.items;
+        
+
         let totalAmount=0;
 
         for(let i=0; i<items.length; i++){
@@ -19,8 +23,11 @@ export default class Payment extends Component{
             totalAmount=(totalAmount+(items[i].quantity*items[i].ticket.ticketPricingAmount));
         }
 
+        const cartID=localStorage.getItem("localCartID");
+    
+
         const payload= {
-            cartID: "5c7926c6d610e309f8d1716d",
+            cartID: cartID,
             paymentAuthorize: "PAYPAL",
             purchaseSum:totalAmount
         }
@@ -54,3 +61,16 @@ export default class Payment extends Component{
             );
         }
     }
+
+    const mapStateToProps = (state)=>{
+        return{
+            items: state.addedItems,
+            //addedItems: state.addedItems
+        }
+    }
+    const mapDispatchToProps = (dispatch)=>{
+        return{
+    
+        }
+    }
+    export default connect(mapStateToProps,mapDispatchToProps)(Payment)

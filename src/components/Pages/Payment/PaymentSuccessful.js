@@ -37,7 +37,6 @@ class PaymentSuccess extends Component{
     }
     componentDidMount() {
 
-
         //CHECK IF PAYPAL PAYMENT IS SUCCESSFUL
         var params = this.parseurl();
         const payload ={
@@ -63,7 +62,40 @@ class PaymentSuccess extends Component{
                 //CLEAR REDUX
                 const blank={};
                 console.info("PaymentSuccess->componentWillUnmount");
-                this.props.clearCart(blank);   
+                this.props.clearCart(blank);
+
+                //UPDATE CART STATUS
+                var milliseconds = (new Date).getTime();
+                const localCartID=localStorage.getItem("localCartID");
+                const paydata = {
+                    cartID:localCartID,
+                    dateUpdated:milliseconds,
+                    cartStatus:'Purchase',
+                   
+                };
+
+                fetch(properties.cartserviceurl+'/api/cart/updatecart', {
+                    method: 'POST',
+                    crossDomain:true,
+                    mode:"cors",
+                    headers: { 'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin':'*'
+                },
+                    body:  JSON.stringify(paydata)
+                  })
+                  .then(response =>response.json())
+                  .then( data=>{
+                      if(data.MessageTypeID===0){
+                          console.info(data);
+
+                      }else{
+                        localStorage.removeItem("localCartID");
+                    }
+                    
+                  })
+                  .catch((error) => { console.log(error);});
+                
           })
           .catch((error) => { console.log(error);});
 

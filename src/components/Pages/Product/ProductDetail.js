@@ -25,11 +25,103 @@ class ProductDetail extends Component{
             },
             quantity:1,
             productID:'',
-            reviews:[]
+            reviews:[],
+            cartID:''
         };
         this.handleClick= this.handleClick.bind(this);
+        
       }
       handleClick = (prod, ticket, key)=>{
+
+        //CHECK CARTID
+        if( this.state.cartID ===''){
+
+            //Check LocalStore
+            const localCartID=localStorage.getItem("localCartID");
+
+            console.info(this.props.items);
+
+            if(localCartID === null || this.props.items===undefined){
+                var milliseconds = (new Date).getTime();
+                
+                const data = {
+                    created:milliseconds, 
+                    dateUpdated:milliseconds,
+                    cartStatus:'Active',
+                    cartProducts:[
+                        {
+                            productQuanity:this.state.quantity,
+                            productID:prod.iD
+                        }
+                    ]
+                };
+
+                fetch(properties.cartserviceurl+'/api/cart/addtocart', {
+                    method: 'POST',
+                    crossDomain:true,
+                    mode:"cors",
+                    headers: { 'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin':'*'
+                },
+                    body:  JSON.stringify(data)
+                  })
+                  .then(response =>response.json())
+                  .then( data=>{
+                    if(data === null){
+                        console.info(data);
+                    }else{
+                        localStorage.setItem("localCartID", data.cartID);
+                        this.setState({ cartID:  data.cartID });
+                    }
+                 
+                     
+                  })
+                  .catch((error) => { console.log(error);});
+
+                
+
+            }else{
+                this.setState({ cartID: localCartID });
+
+            }
+        }else{
+
+
+            const data = {
+                cartID:this.state.cartID,
+                dateUpdated:milliseconds,
+                cartProducts:[
+                    {
+                        productQuanity:this.state.quantity,
+                        productID:prod.iD
+                    }
+                ]
+            };
+            fetch(properties.cartserviceurl+'/api/cart/updatecart', {
+                method: 'POST',
+                crossDomain:true,
+                mode:"cors",
+                headers: { 'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
+                body:  JSON.stringify(data)
+              })
+              .then(response =>response.json())
+              .then( data=>{
+                if(data.MessageTypeID ===0){
+                    console.info(data);
+                } 
+              })
+              .catch((error) => { console.log(error);});
+
+
+        }
+        console.info("this.handleClick");
+        console.info(prod);
+
+
         const merged={
             productdata:prod,
             ticketdata:ticket,
@@ -142,7 +234,9 @@ class ProductDetail extends Component{
                             <div>
                                 <div className="row"><div className="col-md-12 col-sm-12 p-t-50 font-regular font-100">${pricing.ticketPricingAmount}.00</div></div>
                                 <div className="row"><div className="col-md-12 col-sm-12"><InputNumber min={min} max={max} name="quantity" defaultValue={defaultvalue} onChange={this.handleChange}/>
-                                <span to="/" className="btn-floating halfway-fab waves-effect waves-light red" onClick={()=>{this.handleClick(prod, pricing, i)}}><i className="material-icons"> &nbsp; ADD</i></span>
+                                <span className="pl-3 btn-floating halfway-fab waves-effect waves-light red">
+                                <a class="linkbutton font-regular font-75" onClick={()=>{this.handleClick(prod, pricing, i)}} href={"#"}>Add</a>
+                                </span>
                                 </div></div>
                             </div>
                         

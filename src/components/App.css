@@ -39,14 +39,54 @@ input[type='text'], input[type='password'], input[type='email'] {
   letter-spacing: 0.1em;
 }
 
+
 button {
   border: none;
-  font-size: 0.75rem;
-  color: #FFFFFF;
-  background-color: #FF3B3F;
-  line-height: 0;
-  padding: 20px 30px;
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
   border-radius: 20px;
   letter-spacing: 0.01em;
   text-shadow: none;
 }
+/*
+
+
+a.linkbutton:link {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+
+a.linkbutton:visited {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+
+a.linkbutton:hover {
+  background-color: red;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  text-shadow: none;;
+}
+
+*/

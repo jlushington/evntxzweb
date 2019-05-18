@@ -105,7 +105,7 @@ export default class Signup extends Component{
                         </div>
 
                         {/*LOGIN BODY*/}
-                        <div className="row bg-grey align-left">
+                        <div className="row align-left">
                             <div className="col-md-12 col-xs-12">
                                 <div className="row"><div className="col-md-12 col-xs-12 font-75 font-regular p-b-25 p-t-25">Please enter your email and password below to access your account</div></div>
                                 <div className="row"><div className="col-md-12 col-xs-12">
@@ -130,7 +130,7 @@ export default class Signup extends Component{
                                         <input id="passwordConfirm" name="passwordConfirm" type="password" onChange={this.handleChange} />
                                     </div>
                                     <div align="center">
-                                        <button className="btn btn-orange">Signup</button>
+                                    <button className="font-75 color-white">SIGNUP</button>
                                     </div> 
                                 </form>
                                 </div></div>

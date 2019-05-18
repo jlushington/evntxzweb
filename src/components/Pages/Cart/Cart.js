@@ -4,7 +4,7 @@ import {Steps} from 'antd';
 import {properties} from '../../../properties';
 
 //import { Link } from 'react-router-dom'
-import { removeItem,addQuantity,subtractQuantity} from '../../actions/cartActions'
+import { removeItem,addQuantity,subtractQuantity, updateQuantity} from '../../actions/cartActions'
 //import Recipe from './Recipe';
 
 import "antd/dist/antd.css";
@@ -26,6 +26,7 @@ class Cart extends Component{
           current: 0,
         };
         this.handleClick= this.handleClick.bind(this);
+        this.handleRemoveClick= this.handleRemoveClick.bind(this);
       }
 
 
@@ -41,6 +42,13 @@ class Cart extends Component{
     handleSubtractQuantity = (id)=>{
         this.props.subtractQuantity(id);
     }
+
+    handleUpdateQuantity = (e)=>{
+        console.info(e);
+        const data=e;
+        this.props.updateQuantity(data);
+        //this.setState({ [e.target.name]: e.target.value });
+      }
 
     handleClick = ()=>{
 
@@ -59,11 +67,22 @@ class Cart extends Component{
         }else{
             window.location.replace(properties.weburl+"/checkout");
         }
-      
+    }
+
+    handleRemoveClick = (prod, key)=>{
+        console.info(prod);
+        console.info(key);
 
         
-  
+        const merged={
+            productdata:prod,
+            ticketkey:key
+        }
+        this.props.removeItem(merged); 
+
     }
+
+   
 
     render(){
         const { current } = this.state;
@@ -71,7 +90,7 @@ class Cart extends Component{
         const max=10;
         //const defaultvalue=1;
         const items = this.props.items;
-        console.info(items);
+        //console.info(items);
 
         let totalAmount=0;
 
@@ -109,28 +128,33 @@ class Cart extends Component{
                                             <th scope="col">Item</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Price</th>
-                                            <th scope="col">Qantity</th>
+                                            <th scope="col">Quantity</th>
                                             <th scope="col">Sub Totals</th>
                                         </tr>
                                     </thead>
                         
                                     <tbody>
-                                        {console.info("cart02")}
-                                        {console.info( this.props.items)}
+                                        {/*console.info("cart02")
+                                        {console.info( this.props.items)*/}
                                         {
-                                            items.map(item =>
+                                            items.map((item,i) =>
+                                
                                                
                                         <tr>
                                             <td class="w-25">  <img class="d-block w-100" src={item.product.eventImage[0].imageLoc}  alt="First slide" /></td>
                                             <td class="font-regular font-75 text-left">
                                                 <div className="row"><div className="col-md-12 col-sm-12  font-100">{item.product.eventName}</div></div>
                                                 <div className="row"><div className="col-md-12 col-sm-12">{item.product.eventDescription.substring(0,100)}...</div></div>
-                                                <div className="row"><div className="col-md-12 col-sm-12 p-t-50">Remove Item</div></div>
+                                                <div className="row"><div className="col-md-12 col-sm-12 p-t-50">
+                                                {/*<a class="font-regular font-75" onClick={()=>{this.handleRemoveClick(item, i)}} href={"#"}>Remove Item</a>*/}
+                                                <a class="font-regular font-75" onClick={()=>{this.handleRemove(i)}} href={"#"}>Remove Item</a>
+                                                
+                                                </div></div>
                                             </td>
                                             <td>${item.ticket.ticketPricingAmount}.00 </td>
-                                            <td><InputNumber min={min} max={max} defaultValue={item.quantity} onChange={this.handleChange}/></td>
+                                            <td><InputNumber min={min} max={max} defaultValue={item.quantity} onChange={(e)=>{this.handleUpdateQuantity({value:e, key:i})}}/></td>
                                             
-                                            <td>{item.ticket.ticketPricingAmount * item.quantity}</td>
+                                            <td>${item.ticket.ticketPricingAmount * item.quantity}.00</td>
                                         </tr>
                                         )
                                     }
