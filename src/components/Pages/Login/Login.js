@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {properties} from '../../../properties';
+import Spinner from 'react-spinner-material';
 
 export default class Login extends Component{
 
@@ -9,7 +10,8 @@ export default class Login extends Component{
             password:'',
             email:'', 
             loginmodal:false,
-            isAuth:false
+            isAuth:false,
+            isLoading:false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -28,6 +30,7 @@ export default class Login extends Component{
       }
 
       handleSubmit(event){
+          this.setState({isLoading:true});
         event.preventDefault();
         const data = {password:this.state.password, email:this.state.email};
 
@@ -93,6 +96,7 @@ export default class Login extends Component{
                     <div className="col-md-8 col-xs-8">
                         {/*LOGIN TITLE*/}
                         <div className="row">
+                            <Spinner size={120} spinnerColor={"#333"} spinnerWidth={2} visible={this.state.isLoading} />
                             <div className="col-md-12 col-xs-12 font-125 font-bold p-b-25">LOGIN</div>
                         </div>
 

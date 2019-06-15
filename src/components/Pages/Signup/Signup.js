@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 import './Signup.css';
+import Spinner from 'react-spinner-material';
+import {properties} from '../../../properties';
 
 export default class Signup extends Component{
 
@@ -12,7 +14,8 @@ export default class Signup extends Component{
             passwordConfirm:'',
             email:'', 
             emailmodal:false,
-            welcomemodal:false
+            welcomemodal:false,
+            isLoading:false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeCheck= this.handleChangeCheck.bind(this);
@@ -30,11 +33,12 @@ export default class Signup extends Component{
       }
 
       handleChangeCheck = (e)=>{
+        this.setState({isLoading:true});
         this.setState({ [e.target.name]: e.target.value });
 
         const data = { email:this.state.email };
 
-        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/auth/authcheck', {
+        fetch(properties.userserviceurl+'/api/auth/authcheck', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -50,10 +54,12 @@ export default class Signup extends Component{
                     this.setState(prevState =>({ emailmodal:!prevState.emailmodal}));
                     this.setState({ email:''});
                     document.getElementById("email").reset();
+                    this.setState({isLoading:false});
                 }
                 
             }).catch((error) => {
-                console.log("error");
+                console.log(error);
+                this.setState({isLoading:false});
             });
 
       }
@@ -67,7 +73,7 @@ export default class Signup extends Component{
 
         const data = { username:this.state.username, password:this.state.password, passwordConfirm:this.state.passwordConfirm , email:this.state.email,roles:[{name:"ENDUSER"}]  };
 
-        fetch('http://userservices.jx-staging.35.231.104.48.nip.io/api/user/adduser', {
+        fetch(properties.userserviceurl+'/api/user/adduser', {
             method: 'POST',
             crossDomain:true,
             mode:"cors",
@@ -101,6 +107,7 @@ export default class Signup extends Component{
                     <div className="col-md-8 col-xs-8">
                         {/*LOGIN TITLE*/}
                         <div className="row">
+                            <Spinner size={120} spinnerColor={"#333"} spinnerWidth={2} visible={this.state.isLoading} />
                             <div className="col-md-12 col-xs-12 font-125 font-bold p-b-25">SIGN UP</div>
                         </div>
 

@@ -286,6 +286,7 @@ class ProductDetail extends Component{
                         {/** REVIEW BODY **/}
                         {
                             reviews.map(review =>
+                                
               
                                     
                         <div class="row p-t-25">

@@ -42,7 +42,7 @@ class App extends Component {
           <Route path="/checkout" component={CheckOut}/>
           <Route path="/payment" component={Payment}/>
           <Route path="/paymentsuccessful" component={PaymentSuccess}/>
-          <Route path="/paymentcancel" component={PaymentCancel}/>
+          <Route path="/paymentcancel/:msg" component={PaymentCancel}/>
           <Route path="/events" component={Events}/>
           <Route path="/venue" component={Venue}/>
           <Route path="/help" component={Help}/>

@@ -51,7 +51,16 @@ class Payment extends Component{
 
       }
         )
-      .catch((error) => { console.log(error);});
+      .catch((error) => { 
+          //Issue connecting to Purchase Service
+          /*
+          0-Purchase Services Unaviable 
+          */
+
+          console.info("this is an error")
+          console.log(error);
+          window.location.replace(properties.weburl+"/paymentcancel/0");
+        });
 
     }
 
