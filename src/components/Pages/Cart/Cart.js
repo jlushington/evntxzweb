@@ -62,7 +62,7 @@ class Cart extends Component{
             if(authToken===null || authToken===undefined){
                 window.location.replace(properties.weburl+"/checkout");
             }else{
-                window.location.replace(properties.weburl+"/payment");  
+                window.location.replace(properties.weburl+"/paymentchoice");  
             }
         }else{
             window.location.replace(properties.weburl+"/checkout");
